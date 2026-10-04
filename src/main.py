@@ -6,7 +6,11 @@ import datetime
 import json
 import logging
 from pathlib import Path
+import sys
 import uuid
+
+# Ensure project root is in sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.ai.content_scorer import score_articles
 from src.ai.gemini_client import GeminiClient
@@ -18,6 +22,7 @@ from src.assembly.template_engine import render_newsletter
 from src.config import load_config
 from src.distribution.beehiiv_client import BeehiivClient
 from src.distribution.resend_client import ResendClient
+from src.distribution.social_poster import distribute_social
 from src.ingestion.article_extractor import enrich_articles
 from src.ingestion.deduplicator import deduplicate, get_updated_seen_hashes
 from src.ingestion.rss_fetcher import fetch_all_feeds
@@ -121,6 +126,12 @@ def run_pipeline(dry_run: bool = False, immediate: bool = False, use_local_cache
         with open(preview_file, "w", encoding="utf-8") as f:
             f.write(html_content)
         logger.info(f"Saved preview HTML to {preview_file.resolve()}")
+
+        # Generate social copy & teasers (and distribute to Discord/Telegram if active)
+        try:
+            distribute_social(digest, dry_run=dry_run)
+        except Exception as e:
+            logger.warning(f"Social distribution encounter an error but non-fatal: {e}")
 
         # 8. Distribution / Output
         if not dry_run:

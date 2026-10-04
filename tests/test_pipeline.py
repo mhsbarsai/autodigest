@@ -184,3 +184,45 @@ def test_resend_client_broadcast():
         )
         assert post.post_id == "bcast_123"
         mock_bcast.assert_called_once()
+
+
+def test_social_teaser_generation():
+    from src.distribution.social_poster import generate_social_teasers, distribute_social
+
+    digest = NewsletterDigest(
+        subject_line="DeepSeek V3 Released: 671B Weights Open",
+        preview_text="Full architecture breakdown inside.",
+        greeting="Good morning AI engineers!",
+        articles=[
+            ArticleSummary(
+                headline="DeepSeek V3 Matches Claude 3.5 Sonnet",
+                emoji="🚀",
+                source_name="Hacker News",
+                source_url="https://news.ycombinator.com/item?id=1",
+                summary="DeepSeek released their flagship open model.",
+                key_takeaways=["FP8 native support", "MLA architecture cuts VRAM by 50%"],
+            )
+        ],
+        tool_of_the_day=ArticleSummary(
+            headline="vLLM Inference Engine",
+            emoji="⚡",
+            source_name="GitHub",
+            source_url="https://github.com/vllm-project/vllm",
+            summary="High-throughput serving engine for LLMs.",
+            key_takeaways=["PagedAttention implementation", "Continuous batching with zero memory waste"],
+        ),
+        closing="See you tomorrow!",
+    )
+
+    teasers = generate_social_teasers(digest)
+    assert len(teasers["x_thread"]) == 3
+    assert "DeepSeek V3" in teasers["x_thread"][0]
+    assert "https://mhsbarsai.github.io/autodigest/" in teasers["x_thread"][2]
+    assert "LinkedIn" not in teasers["linkedin_post"]  # should be clean body
+    assert "vLLM Inference Engine" in teasers["linkedin_post"]
+    assert "discord_payload" in teasers
+    assert len(teasers["discord_payload"]["embeds"][0]["fields"]) == 2
+
+    # Test distribute_social in dry_run mode
+    result = distribute_social(digest, dry_run=True)
+    assert "x_thread" in result

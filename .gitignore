@@ -18,6 +18,9 @@ __pycache__/
 # Local data & cache
 data/*
 !data/seen_articles.json
+!data/affiliate_links.json
+!data/sponsor.json.example
+!data/sponsor.json
 output/
 
 # Editor & OS files

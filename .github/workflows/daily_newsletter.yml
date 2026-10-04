@@ -33,12 +33,25 @@ jobs:
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
           DISTRIBUTION_PROVIDER: ${{ secrets.DISTRIBUTION_PROVIDER || 'resend' }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL || 'AutoDigest <onboarding@resend.dev>' }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL || 'NeuralBrief <onboarding@resend.dev>' }}
           RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
           RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
-          NEWSLETTER_NAME: ${{ secrets.NEWSLETTER_NAME || 'AutoDigest' }}
+          NEWSLETTER_NAME: ${{ secrets.NEWSLETTER_NAME || 'NeuralBrief' }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python scripts/run_daily.py
+
+      - name: Upload Daily Edition & Social Teasers Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-briefing-artifacts
+          path: |
+            output/latest_preview.html
+            output/today_social_teasers.md
+          retention-days: 14
 
       - name: Commit Seen Articles Cache
         run: |
