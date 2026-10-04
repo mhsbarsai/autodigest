@@ -20,7 +20,7 @@ from src.models.schemas import NewsletterDigest
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_LANDING_URL = "https://mhsbarsai.github.io/autodigest/"
+DEFAULT_LANDING_URL = "https://creavora.my.id/"
 
 
 def generate_social_teasers(
@@ -82,7 +82,7 @@ def generate_social_teasers(
 
     # --- 3. Telegram Message (Markdown format) ---
     tg_lines = [
-        f"⚡ *NeuralBrief Daily Briefing*",
+        f"⚡ *Creavora Daily Briefing*",
         f"*{digest.subject_line}*",
         "",
     ]
@@ -116,7 +116,7 @@ def generate_social_teasers(
         })
 
     discord_payload = {
-        "username": "NeuralBrief Bot",
+        "username": "Creavora Bot",
         "avatar_url": "https://raw.githubusercontent.com/mhsbarsai/autodigest/main/docs/avatar.png",
         "embeds": [
             {
@@ -124,7 +124,7 @@ def generate_social_teasers(
                 "description": f"{digest.greeting}\n\n[**Read Web Version & Subscribe**]({landing_url})",
                 "color": 6514417,  # Indigo #6366f1
                 "fields": discord_fields,
-                "footer": {"text": "NeuralBrief — Daily 3-minute technical AI briefing"},
+                "footer": {"text": "Creavora — Daily 3-minute technical AI briefing"},
             }
         ],
     }
@@ -185,7 +185,7 @@ def distribute_social(
 
     x_formatted = "\n\n---\n\n".join([f"**Tweet {i+1}:**\n{t}" for i, t in enumerate(teasers["x_thread"])])
 
-    markdown_content = f"""# NeuralBrief — Today's Social Teasers & Teaser Copy
+    markdown_content = f"""# Creavora — Today's Social Teasers & Teaser Copy
 
 ## 🐦 X / Twitter Thread (Ready to Copy & Post)
 {x_formatted}
@@ -212,7 +212,7 @@ def distribute_social(
     if summary_path and Path(summary_path).exists():
         try:
             with open(summary_path, "a", encoding="utf-8") as sf:
-                sf.write(f"\n\n## 📢 Today's NeuralBrief Social Teasers\n\n{markdown_content}\n")
+                sf.write(f"\n\n## 📢 Today's Creavora Social Teasers\n\n{markdown_content}\n")
             logger.info("Appended social teasers to GITHUB_STEP_SUMMARY.")
         except Exception as e:
             logger.warning(f"Could not write to GITHUB_STEP_SUMMARY: {e}")

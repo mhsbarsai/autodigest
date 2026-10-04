@@ -33,10 +33,10 @@ jobs:
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
           DISTRIBUTION_PROVIDER: ${{ secrets.DISTRIBUTION_PROVIDER || 'resend' }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL || 'NeuralBrief <onboarding@resend.dev>' }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL || 'Creavora <onboarding@resend.dev>' }}
           RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
           RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
-          NEWSLETTER_NAME: ${{ secrets.NEWSLETTER_NAME || 'NeuralBrief' }}
+          NEWSLETTER_NAME: ${{ secrets.NEWSLETTER_NAME || 'Creavora' }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

@@ -16,18 +16,18 @@ logger = logging.getLogger(__name__)
 # Default registry of supported AI tools and their affiliate / referral URLs.
 # Users can override or add their own custom links in data/affiliate_links.json.
 DEFAULT_AFFILIATE_MAPPINGS: dict[str, str] = {
-    "Cursor": "https://cursor.com/?ref=neuralbrief",
-    "Perplexity": "https://www.perplexity.ai/?ref=neuralbrief",
-    "Notion AI": "https://www.notion.so/product/ai?ref=neuralbrief",
-    "Claude": "https://claude.ai/?ref=neuralbrief",
-    "ChatGPT": "https://chatgpt.com/?ref=neuralbrief",
-    "Midjourney": "https://www.midjourney.com/?ref=neuralbrief",
-    "Runway": "https://runwayml.com/?ref=neuralbrief",
-    "ElevenLabs": "https://elevenlabs.io/?ref=neuralbrief",
-    "Make": "https://www.make.com/en/register?ref=neuralbrief",
-    "Jasper": "https://www.jasper.ai/?ref=neuralbrief",
-    "Copy.ai": "https://www.copy.ai/?ref=neuralbrief",
-    "Grammarly": "https://www.grammarly.com/?ref=neuralbrief",
+    "Cursor": "https://cursor.com/?ref=creavora",
+    "Perplexity": "https://www.perplexity.ai/?ref=creavora",
+    "Notion AI": "https://www.notion.so/product/ai?ref=creavora",
+    "Claude": "https://claude.ai/?ref=creavora",
+    "ChatGPT": "https://chatgpt.com/?ref=creavora",
+    "Midjourney": "https://www.midjourney.com/?ref=creavora",
+    "Runway": "https://runwayml.com/?ref=creavora",
+    "ElevenLabs": "https://elevenlabs.io/?ref=creavora",
+    "Make": "https://www.make.com/en/register?ref=creavora",
+    "Jasper": "https://www.jasper.ai/?ref=creavora",
+    "Copy.ai": "https://www.copy.ai/?ref=creavora",
+    "Grammarly": "https://www.grammarly.com/?ref=creavora",
 }
 
 

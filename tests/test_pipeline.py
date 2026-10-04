@@ -217,7 +217,7 @@ def test_social_teaser_generation():
     teasers = generate_social_teasers(digest)
     assert len(teasers["x_thread"]) == 3
     assert "DeepSeek V3" in teasers["x_thread"][0]
-    assert "https://mhsbarsai.github.io/autodigest/" in teasers["x_thread"][2]
+    assert "https://creavora.my.id/" in teasers["x_thread"][2]
     assert "LinkedIn" not in teasers["linkedin_post"]  # should be clean body
     assert "vLLM Inference Engine" in teasers["linkedin_post"]
     assert "discord_payload" in teasers

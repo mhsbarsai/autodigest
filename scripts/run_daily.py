@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 def main() -> None:
     logger.info("=" * 60)
-    logger.info("STARTING NEURALBRIEF DAILY AUTOMATION RUN")
+    logger.info("STARTING CREAVORA DAILY AUTOMATION RUN")
     logger.info("=" * 60)
 
     # Pre-flight environment check
@@ -70,7 +70,7 @@ def main() -> None:
         logger.error(f"Pipeline failed: {run.error}")
         sys.exit(1)
 
-    logger.info("NeuralBrief daily briefing completed successfully!")
+    logger.info("Creavora daily briefing completed successfully!")
 
 
 if __name__ == "__main__":

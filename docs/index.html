@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralBrief — Technical Intelligence for AI Engineers & Builders</title>
+    <title>Creavora — Technical Intelligence for AI Engineers & Builders</title>
     <meta name="description" content="A concise, high-signal morning briefing on frontier AI models, autonomous agent runtimes, and production developer tools. No marketing hype. Read in 3 minutes.">
     
     <!-- OpenGraph / Social Meta -->
-    <meta property="og:title" content="NeuralBrief — Technical Intelligence for AI Engineers">
+    <meta property="og:title" content="Creavora — Technical Intelligence for AI Engineers">
     <meta property="og:description" content="Frontier models, agent architectures, and actionable tools. 3-minute morning briefing.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mhsbarsai.github.io/autodigest/">
+    <meta property="og:url" content="https://creavora.my.id/">
     <meta name="twitter:card" content="summary_large_image">
     
     <!-- Modern Editorial Typography -->
@@ -619,7 +619,7 @@
             <div class="brand-cluster">
                 <a href="#" class="brand-logo">
                     <span class="logo-symbol"></span>
-                    NeuralBrief
+                    Creavora
                 </a>
                 <span class="status-pill">
                     <span class="pulse-dot"></span>
@@ -697,7 +697,7 @@
                         <span class="window-dot"></span>
                         <span class="window-dot"></span>
                     </div>
-                    <span class="window-title">neuralbrief-issue-042.md</span>
+                    <span class="window-title">creavora-issue-042.md</span>
                     <span style="font-family: var(--font-mono); font-size: 11px; color: var(--indigo-light);">EST. READ 2M 45S</span>
                 </div>
 
@@ -805,10 +805,10 @@
 
         <!-- Footer -->
         <footer>
-            <div>&copy; 2026 NeuralBrief. Dispatched daily by autonomous editorial pipelines.</div>
+            <div>&copy; 2026 Creavora. Dispatched daily by autonomous editorial pipelines.</div>
             <div class="footer-links">
                 <a href="https://github.com/mhsbarsai/autodigest" target="_blank" rel="noopener">GitHub</a>
-                <a href="mailto:mahsabar99@gmail.com?subject=Inquiry+-+NeuralBrief">Contact / Sponsor</a>
+                <a href="mailto:mahsabar99@gmail.com?subject=Inquiry+-+Creavora">Contact / Sponsor</a>
             </div>
         </footer>
     </div>
@@ -830,10 +830,10 @@
 
             try {
                 // 1. Store in local client-side persistence
-                const stored = JSON.parse(localStorage.getItem('neuralbrief_subscribers') || '[]');
+                const stored = JSON.parse(localStorage.getItem('creavora_subscribers') || '[]');
                 if (!stored.includes(email)) {
                     stored.push(email);
-                    localStorage.setItem('neuralbrief_subscribers', JSON.stringify(stored));
+                    localStorage.setItem('creavora_subscribers', JSON.stringify(stored));
                 }
 
                 // 2. Optional: If you connect a free Formspree / webhook endpoint, it submits in background
@@ -841,11 +841,11 @@
                 // await fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
 
                 if (feedback) {
-                    feedback.textContent = "✓ You are subscribed to NeuralBrief. Your first morning briefing arrives before 06:00 WIB.";
+                    feedback.textContent = "✓ You are subscribed to Creavora. Your first morning briefing arrives before 06:00 WIB.";
                     feedback.className = 'form-feedback success';
                     feedback.style.display = 'block';
                 } else {
-                    alert("✓ You are subscribed to NeuralBrief! Your first morning briefing arrives tomorrow.");
+                    alert("✓ You are subscribed to Creavora! Your first morning briefing arrives tomorrow.");
                 }
                 input.value = '';
             } catch (err) {

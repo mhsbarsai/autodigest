@@ -74,9 +74,9 @@ def inject_sponsor(
     # 3. Default high-converting sponsorship CTA
     inquiry_html = """
     <div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 18px 20px; text-align: center; margin: 28px 0;">
-        <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; display: block; margin-bottom: 4px;">Partner With NeuralBrief</span>
+        <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; display: block; margin-bottom: 4px;">Partner With Creavora</span>
         <p style="font-size: 13px; color: #475569; margin: 0 0 10px 0; line-height: 1.5;">Reach 1,000+ engineers, researchers, and technical founders every morning.</p>
-        <a href="mailto:mahsabar99@gmail.com?subject=Sponsorship%20Inquiry%20-%20NeuralBrief" style="color: #6366f1; font-weight: 700; font-size: 13px; text-decoration: none;">Reserve a sponsor slot in tomorrow's edition &rarr;</a>
+        <a href="mailto:mahsabar99@gmail.com?subject=Sponsorship%20Inquiry%20-%20Creavora" style="color: #6366f1; font-weight: 700; font-size: 13px; text-decoration: none;">Reserve a sponsor slot in tomorrow's edition &rarr;</a>
     </div>
     """
     return html.replace(placeholder, inquiry_html)

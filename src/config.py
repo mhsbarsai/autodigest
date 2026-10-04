@@ -32,7 +32,7 @@ class ResendConfig:
 
     api_key: str = field(repr=False, default_factory=lambda: os.environ.get("RESEND_API_KEY", ""))
     from_email: str = field(
-        default_factory=lambda: os.environ.get("RESEND_FROM_EMAIL", "AutoDigest <onboarding@resend.dev>")
+        default_factory=lambda: os.environ.get("RESEND_FROM_EMAIL", "Creavora <onboarding@resend.dev>")
     )
     to_email: str = field(default_factory=lambda: os.environ.get("RESEND_TO_EMAIL", ""))
     audience_id: str = field(default_factory=lambda: os.environ.get("RESEND_AUDIENCE_ID", ""))
@@ -62,7 +62,7 @@ class StorageConfig:
 class NewsletterConfig:
     """Newsletter identity & schedule settings."""
 
-    name: str = field(default_factory=lambda: os.environ.get("NEWSLETTER_NAME", "NeuralBrief"))
+    name: str = field(default_factory=lambda: os.environ.get("NEWSLETTER_NAME", "Creavora"))
     tagline: str = (
         "High-signal AI intelligence in under 3 minutes — frontier breakthroughs, agents, and actionable tools."
     )
