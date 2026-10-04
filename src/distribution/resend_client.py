@@ -65,10 +65,8 @@ class ResendClient:
         # Combine unique recipients
         all_recipients = list(dict.fromkeys(active_subscribers + config_recipients))
         if not all_recipients:
-            raise ValueError(
-                "No subscribers found in data/subscribers.json and RESEND_TO_EMAIL is empty. "
-                "Specify at least one recipient email or configure an audience ID."
-            )
+            logger.warning("No subscribers found in data/subscribers.json or RESEND_TO_EMAIL. Defaulting to owner mahsabar99@gmail.com.")
+            all_recipients = ["mahsabar99@gmail.com"]
 
         logger.info(f"Dispatching newsletter to {len(all_recipients)} subscriber(s)...")
 

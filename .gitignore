@@ -21,6 +21,7 @@ data/*
 !data/affiliate_links.json
 !data/sponsor.json.example
 !data/sponsor.json
+!data/subscribers.json
 output/
 
 # Editor & OS files
