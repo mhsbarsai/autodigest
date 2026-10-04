@@ -1,0 +1,1 @@
+# AutoDigest package marker

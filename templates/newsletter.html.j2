@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ newsletter_name }}</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; margin: 0; padding: 0; background-color: #ffffff; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { border-bottom: 2px solid #f3f4f6; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
+        .header h1 { margin: 0; color: #1a1a1a; font-size: 28px; }
+        .meta { color: #6b7280; font-size: 14px; margin-top: 5px; }
+        .greeting { font-size: 17px; margin-bottom: 30px; line-height: 1.5; color: #374151; }
+        .article { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid #f3f4f6; }
+        .article-title { margin: 0 0 8px 0; font-size: 20px; line-height: 1.3; }
+        .article-source { color: #6b7280; font-size: 13px; font-weight: 600; margin-bottom: 12px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .takeaways { background-color: #f9fafb; padding: 15px; border-radius: 6px; margin: 15px 0; border-left: 3px solid #2563eb; }
+        .takeaways h4 { margin: 0 0 8px 0; font-size: 14px; color: #1f2937; }
+        .takeaways ul { margin: 0; padding-left: 20px; color: #4b5563; font-size: 14px; }
+        .takeaways li { margin-bottom: 4px; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tool-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .tool-tag { font-size: 12px; font-weight: bold; color: #1d4ed8; text-transform: uppercase; margin-bottom: 5px; }
+        .closing { margin: 30px 0; font-size: 16px; color: #374151; line-height: 1.5; }
+        .footer { border-top: 2px solid #f3f4f6; padding-top: 20px; margin-top: 40px; text-align: center; color: #6b7280; font-size: 12px; }
+        
+        @media only screen and (max-width: 480px) {
+            .container { padding: 12px; }
+            .article-title { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ newsletter_name }}</h1>
+            <div class="meta">Edition #{{ edition_number }} &bull; {{ current_date }}</div>
+        </div>
+        
+        <div class="greeting">
+            {{ digest.greeting }}
+        </div>
+        
+        <div class="articles">
+            {% for article in digest.articles %}
+            <div class="article">
+                <h2 class="article-title">{{ article.emoji }} {{ article.headline }}</h2>
+                <span class="article-source">Source: {{ article.source_name }}</span>
+                <p>{{ article.summary }}</p>
+                
+                {% if article.key_takeaways %}
+                <div class="takeaways">
+                    <h4>Key Takeaways</h4>
+                    <ul>
+                        {% for takeaway in article.key_takeaways %}
+                        <li>{{ takeaway }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <p><a href="{{ article.source_url }}" target="_blank">Read full article &rarr;</a></p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if digest.tool_of_the_day %}
+        <div class="tool-box">
+            <div class="tool-tag">🛠️ Featured Tool of the Day</div>
+            <h3 style="margin: 0 0 10px 0; color: #1e3a8a;">{{ digest.tool_of_the_day.emoji }} {{ digest.tool_of_the_day.headline }}</h3>
+            <p style="margin: 0 0 10px 0;">{{ digest.tool_of_the_day.summary }}</p>
+            {% if digest.tool_of_the_day.key_takeaways %}
+            <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 14px; color: #3b82f6;">
+                {% for takeaway in digest.tool_of_the_day.key_takeaways %}
+                <li>{{ takeaway }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p><a href="{{ digest.tool_of_the_day.source_url }}" target="_blank" style="font-weight: bold;">Check out {{ digest.tool_of_the_day.source_name }} &rarr;</a></p>
+        </div>
+        {% endif %}
+        
+        {{ '{{SPONSOR_SLOT}}' }}
+        
+        <div class="closing">
+            <p>{{ digest.closing }}</p>
+        </div>
+        
+        <div class="footer">
+            <p>You are receiving this because you subscribed to {{ newsletter_name }}.</p>
+            <p>
+                <a href="{{ '{{ unsubscribe_url }}' }}">Unsubscribe</a> | 
+                <a href="{{ '{{ view_in_browser_url }}' }}">View in browser</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

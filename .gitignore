@@ -1,0 +1,27 @@
+# Environment & Secrets (NEVER COMMIT)
+.env
+*.env
+
+# Python Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Local data & cache
+data/*
+!data/seen_articles.json
+output/
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,1 @@
+"""Assembly package for AutoDigest."""
