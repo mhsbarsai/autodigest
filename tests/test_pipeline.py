@@ -131,7 +131,8 @@ def test_resend_client_direct_email():
     )
     client = ResendClient(config)
 
-    with patch("resend.Emails.send", return_value={"id": "email_123"}) as mock_send:
+    with patch("src.distribution.subscriber_manager.SubscriberManager.get_active_subscribers", return_value=[]), \
+         patch("resend.Emails.send", return_value={"id": "email_123"}) as mock_send:
         post = client.publish_newsletter(
             subject="Test Subject",
             html_content="<p>Test</p>",
@@ -139,6 +140,29 @@ def test_resend_client_direct_email():
         assert post.post_id == "email_123"
         assert post.status == "sent"
         mock_send.assert_called_once()
+
+
+def test_resend_client_batch_email():
+    from unittest.mock import patch
+    from src.config import ResendConfig
+    from src.distribution.resend_client import ResendClient
+
+    config = ResendConfig(
+        api_key="re_test_123",
+        from_email="AutoDigest <onboarding@resend.dev>",
+        to_email="",
+    )
+    client = ResendClient(config)
+
+    with patch("src.distribution.subscriber_manager.SubscriberManager.get_active_subscribers", return_value=["sub1@example.com", "sub2@example.com"]), \
+         patch("resend.Batch.send", return_value=[{"id": "b1"}, {"id": "b2"}]) as mock_batch:
+        post = client.publish_newsletter(
+            subject="Batch Subject",
+            html_content="<p>Batch Content</p>",
+        )
+        assert post.post_id.startswith("batch_")
+        assert post.status == "sent"
+        mock_batch.assert_called_once()
 
 
 def test_resend_client_broadcast():

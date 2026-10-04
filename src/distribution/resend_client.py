@@ -54,33 +54,63 @@ class ResendClient:
                 web_url=f"https://resend.com/broadcasts/{broadcast_id}",
             )
 
-        # Fallback to direct email sending (to recipient or comma-separated list of recipients)
-        recipients = [e.strip() for e in self.config.to_email.split(",") if e.strip()]
-        if not recipients:
+        # Collect recipients from subscriber manager and config
+        from src.distribution.subscriber_manager import SubscriberManager
+        import uuid
+
+        sub_manager = SubscriberManager()
+        active_subscribers = sub_manager.get_active_subscribers()
+        config_recipients = [e.strip() for e in self.config.to_email.split(",") if e.strip()]
+
+        # Combine unique recipients
+        all_recipients = list(dict.fromkeys(active_subscribers + config_recipients))
+        if not all_recipients:
             raise ValueError(
-                "Neither RESEND_AUDIENCE_ID nor RESEND_TO_EMAIL is configured. "
-                "Specify at least one recipient email in RESEND_TO_EMAIL or an audience ID."
+                "No subscribers found in data/subscribers.json and RESEND_TO_EMAIL is empty. "
+                "Specify at least one recipient email or configure an audience ID."
             )
 
-        logger.info(f"Sending newsletter email to: {recipients}")
-        params = {
-            "from": self.config.from_email,
-            "to": recipients,
-            "subject": subject,
-            "html": html_content,
-        }
-        if scheduled_at:
-            params["scheduled_at"] = scheduled_at
+        logger.info(f"Dispatching newsletter to {len(all_recipients)} subscriber(s)...")
 
-        response = resend.Emails.send(params)
-        email_id = (
-            response.get("id", "")
-            if isinstance(response, dict)
-            else getattr(response, "id", "")
-        )
-        return PublishedPost(
-            post_id=email_id,
-            title=subject,
-            status="scheduled" if scheduled_at else "sent",
-            web_url=f"https://resend.com/emails/{email_id}",
-        )
+        if len(all_recipients) == 1:
+            params = {
+                "from": self.config.from_email,
+                "to": all_recipients,
+                "subject": subject,
+                "html": html_content,
+            }
+            if scheduled_at:
+                params["scheduled_at"] = scheduled_at
+
+            response = resend.Emails.send(params)
+            email_id = (
+                response.get("id", "")
+                if isinstance(response, dict)
+                else getattr(response, "id", "")
+            )
+            return PublishedPost(
+                post_id=email_id,
+                title=subject,
+                status="scheduled" if scheduled_at else "sent",
+                web_url=f"https://resend.com/emails/{email_id}",
+            )
+        else:
+            # Batch send for multi-subscriber delivery (preserves recipient privacy)
+            batch_params = [
+                {
+                    "from": self.config.from_email,
+                    "to": [r],
+                    "subject": subject,
+                    "html": html_content,
+                }
+                for r in all_recipients[:100]
+            ]
+            resend.Batch.send(batch_params)
+            batch_id = str(uuid.uuid4())[:8]
+            logger.info(f"Batch dispatch completed for {len(batch_params)} subscriber(s).")
+            return PublishedPost(
+                post_id=f"batch_{batch_id}",
+                title=subject,
+                status="sent",
+                web_url="https://resend.com/emails",
+            )

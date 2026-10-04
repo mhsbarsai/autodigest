@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuralBrief — High-Signal Daily AI Intelligence</title>
+    <meta name="description" content="Your 3-minute morning briefing on frontier AI models, autonomous agents, and actionable tools. Read by engineers, researchers, and builders.">
+    
+    <!-- OpenGraph / Social Meta -->
+    <meta property="og:title" content="NeuralBrief — High-Signal Daily AI Intelligence">
+    <meta property="og:description" content="Your 3-minute morning briefing on frontier AI models, autonomous agents, and actionable tools.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #090d16;
+            --bg-card: #0f172a;
+            --bg-card-hover: #1e293b;
+            --border: #1e293b;
+            --border-highlight: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --indigo: #6366f1;
+            --indigo-light: #818cf8;
+            --emerald: #10b981;
+            --blue: #3b82f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle ambient glow background */
+        .ambient-glow {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(9, 13, 22, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--indigo);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--indigo);
+        }
+
+        .nav-badge {
+            font-size: 12px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 999px;
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .nav-badge { display: inline-block; }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--indigo-light);
+            margin-bottom: 24px;
+        }
+
+        .badge-pulse {
+            width: 6px;
+            height: 6px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--emerald);
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 56px; }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Signup Form */
+        .form-wrapper {
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-highlight);
+            padding: 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 500px) {
+            .signup-form {
+                flex-direction: row;
+            }
+        }
+
+        .signup-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .signup-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .signup-btn {
+            background: var(--indigo);
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .signup-btn:hover {
+            background: #4f46e5;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .form-message {
+            margin-top: 12px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            color: var(--emerald);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .form-message.error {
+            display: block;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Value Grid */
+        .value-section {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-highlight);
+        }
+
+        .card-icon {
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Preview Teaser */
+        .preview-section {
+            padding: 40px 0 80px;
+        }
+
+        .preview-box {
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 12px;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 32px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+            border-top: 4px solid var(--indigo);
+        }
+
+        .preview-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .preview-headline {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .preview-text {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .preview-takeaways {
+            background: #f8fafc;
+            border-left: 3px solid var(--indigo);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .preview-takeaways h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #4338ca;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .preview-takeaways ul {
+            padding-left: 18px;
+            font-size: 13px;
+            color: #334155;
+        }
+
+        .preview-btn {
+            display: inline-block;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="nav-brand">
+                NeuralBrief<span class="nav-dot"></span>
+            </a>
+            <div class="nav-badge">⏱️ 3-Minute Daily Morning Briefing</div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge-pill">
+                <span class="badge-pulse"></span>
+                <span>Autonomous AI Intelligence • 6:00 AM Daily</span>
+            </div>
+
+            <h1>Stay ahead in AI without the endless scroll.</h1>
+            
+            <p class="subtitle">
+                High-signal, zero-hype daily briefing on frontier models, autonomous agents, and actionable tools. Built for software engineers, researchers, and tech founders.
+            </p>
+
+            <div class="form-wrapper">
+                <form id="subscribe-form" class="signup-form" onsubmit="handleSubscribe(event)">
+                    <input 
+                        type="email" 
+                        id="email-input" 
+                        class="signup-input" 
+                        placeholder="Enter your work email..." 
+                        required 
+                        autocomplete="email"
+                    >
+                    <button type="submit" id="submit-btn" class="signup-btn">
+                        Subscribe Free &rarr;
+                    </button>
+                </form>
+                <div id="form-msg" class="form-message"></div>
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-item"><span>⚡</span> 3-min concise read</div>
+                <div class="trust-item"><span>🚫</span> Strictly zero spam</div>
+                <div class="trust-item"><span>🔓</span> 100% Free forever</div>
+                <div class="trust-item"><span>👋</span> One-click unsubscribe</div>
+            </div>
+        </section>
+
+        <!-- What You Get Section -->
+        <section class="value-section">
+            <div class="section-header">
+                <h2 class="section-title">What arrives in your inbox every morning</h2>
+                <p style="color: var(--text-secondary); font-size: 15px;">Engineered specifically for busy builders who value time and substance.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">🧠</span>
+                    <h3 class="card-title">Frontier Models</h3>
+                    <p class="card-desc">Objective analysis of new releases from OpenAI, Anthropic, Google, and open-weight architectures.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤖</span>
+                    <h3 class="card-title">Agent Architectures</h3>
+                    <p class="card-desc">Benchmarks, memory runtimes, code-generation workflows, and autonomous system failures.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛠️</span>
+                    <h3 class="card-title">Tool of the Day</h3>
+                    <p class="card-desc">One practical, developer-ready AI tool or library you can test and deploy immediately.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3 class="card-title">Key Takeaways</h3>
+                    <p class="card-desc">Hard metrics, architectural specs, and "Why It Matters" callouts. Zero marketing buzzwords.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Edition Preview -->
+        <section class="preview-section">
+            <div class="section-header">
+                <h2 class="section-title">A sample from a recent edition</h2>
+            </div>
+
+            <div class="preview-box">
+                <div class="preview-badge">EDITION PREVIEW &bull; TECHCRUNCH &bull; HACKER NEWS</div>
+                <h3 class="preview-headline">🚨 ThinkingBox Benchmark: Tool-Calling Errors Drive 80% of Agent Failures</h3>
+                <p class="preview-text">Microsoft and Hugging Face evaluated 507 stateful workflows. Across multi-turn sessions, agent failures stem almost entirely from tool error recovery rather than reasoning deficits.</p>
+                <div class="preview-takeaways">
+                    <h4>⚡ KEY TAKEAWAYS</h4>
+                    <ul>
+                        <li>Single-trial benchmarks mask massive consistency drops across 20+ runs.</li>
+                        <li>Verifying terminal database state before action commit is critical for production.</li>
+                    </ul>
+                </div>
+                <a href="#subscribe-form" class="preview-btn">Get tomorrow's briefing free &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 NeuralBrief. High signal, zero fluff.</p>
+            <p style="margin-top: 6px;">Automated daily AI briefing system powered by Gemini AI &amp; Resend.</p>
+        </footer>
+    </div>
+
+    <!-- Script for handling client-side signups -->
+    <script>
+        async function handleSubscribe(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('email-input');
+            const submitBtn = document.getElementById('submit-btn');
+            const formMsg = document.getElementById('form-msg');
+            const email = emailInput.value.trim();
+
+            if (!email) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+            formMsg.className = 'form-message';
+            formMsg.style.display = 'none';
+
+            try {
+                // By default, saves to localStorage and gives immediate positive feedback.
+                // In production, connect this to your webhook or free Formspree endpoint.
+                const stored = JSON.parse(localStorage.getItem('neuralbrief_subscribers') || '[]');
+                if (!stored.includes(email)) {
+                    stored.push(email);
+                    localStorage.setItem('neuralbrief_subscribers', JSON.stringify(stored));
+                }
+
+                formMsg.textContent = "🎉 You're in! Welcome to NeuralBrief. Your first morning briefing arrives at 6:00 AM.";
+                formMsg.className = 'form-message success';
+                formMsg.style.display = 'block';
+                emailInput.value = '';
+            } catch (err) {
+                formMsg.textContent = 'Oops! Something went wrong. Please try again.';
+                formMsg.className = 'form-message error';
+                formMsg.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe Free →';
+            }
+        }
+    </script>
+</body>
+</html>
