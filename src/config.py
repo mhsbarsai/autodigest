@@ -62,8 +62,10 @@ class StorageConfig:
 class NewsletterConfig:
     """Newsletter identity & schedule settings."""
 
-    name: str = field(default_factory=lambda: os.environ.get("NEWSLETTER_NAME", "AutoDigest"))
-    tagline: str = "Your daily 3-minute AI briefing — so you stay ahead without the scroll."
+    name: str = field(default_factory=lambda: os.environ.get("NEWSLETTER_NAME", "NeuralBrief"))
+    tagline: str = (
+        "High-signal AI intelligence in under 3 minutes — frontier breakthroughs, agents, and actionable tools."
+    )
     max_articles: int = 5
     min_articles: int = 3
     send_hour_utc: int = field(

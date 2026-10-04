@@ -1,98 +1,316 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
     <title>{{ newsletter_name }}</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; margin: 0; padding: 0; background-color: #ffffff; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { border-bottom: 2px solid #f3f4f6; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
-        .header h1 { margin: 0; color: #1a1a1a; font-size: 28px; }
-        .meta { color: #6b7280; font-size: 14px; margin-top: 5px; }
-        .greeting { font-size: 17px; margin-bottom: 30px; line-height: 1.5; color: #374151; }
-        .article { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid #f3f4f6; }
-        .article-title { margin: 0 0 8px 0; font-size: 20px; line-height: 1.3; }
-        .article-source { color: #6b7280; font-size: 13px; font-weight: 600; margin-bottom: 12px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
-        .takeaways { background-color: #f9fafb; padding: 15px; border-radius: 6px; margin: 15px 0; border-left: 3px solid #2563eb; }
-        .takeaways h4 { margin: 0 0 8px 0; font-size: 14px; color: #1f2937; }
-        .takeaways ul { margin: 0; padding-left: 20px; color: #4b5563; font-size: 14px; }
-        .takeaways li { margin-bottom: 4px; }
-        a { color: #2563eb; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .tool-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin: 30px 0; }
-        .tool-tag { font-size: 12px; font-weight: bold; color: #1d4ed8; text-transform: uppercase; margin-bottom: 5px; }
-        .closing { margin: 30px 0; font-size: 16px; color: #374151; line-height: 1.5; }
-        .footer { border-top: 2px solid #f3f4f6; padding-top: 20px; margin-top: 40px; text-align: center; color: #6b7280; font-size: 12px; }
-        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrapper {
+            width: 100%;
+            background-color: #f8fafc;
+            padding: 24px 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1 0%, #3b82f6 50%, #10b981 100%);
+        }
+        .header {
+            padding: 28px 24px 20px 24px;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: left;
+        }
+        .brand {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0f172a;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .brand-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            margin-left: 4px;
+        }
+        .tagline {
+            font-size: 13px;
+            color: #64748b;
+            margin: 4px 0 12px 0;
+            font-weight: 500;
+        }
+        .meta-pills {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            display: inline-flex;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+        .content {
+            padding: 24px;
+        }
+        .greeting {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .article {
+            margin-bottom: 32px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .source-pill {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #475569;
+            background-color: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .article-title {
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #0f172a;
+            margin: 0 0 10px 0;
+        }
+        .article-summary {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+            margin: 0 0 14px 0;
+        }
+        .takeaways {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid #6366f1;
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin: 14px 0;
+        }
+        .takeaways-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #4f46e5;
+            margin-bottom: 6px;
+        }
+        .takeaways ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+        .takeaways li {
+            margin-bottom: 4px;
+        }
+        .article-link {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4f46e5;
+            text-decoration: none;
+            margin-top: 4px;
+        }
+        .article-link:hover {
+            text-decoration: underline;
+        }
+        .tool-box {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 32px 0;
+        }
+        .tool-badge {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .tool-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 8px 0;
+        }
+        .tool-summary {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.55;
+            margin: 0 0 12px 0;
+        }
+        .tool-button {
+            display: inline-block;
+            padding: 8px 14px;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .feedback-box {
+            text-align: center;
+            padding: 16px;
+            margin: 24px 0;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #64748b;
+        }
+        .closing {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            margin: 24px 0 16px 0;
+        }
+        .footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 20px 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        .footer a {
+            color: #64748b;
+            text-decoration: underline;
+        }
         @media only screen and (max-width: 480px) {
-            .container { padding: 12px; }
-            .article-title { font-size: 18px; }
+            .container { border-radius: 0; border: none; }
+            .header, .content, .footer { padding: 18px; }
+            .article-title { font-size: 17px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>{{ newsletter_name }}</h1>
-            <div class="meta">Edition #{{ edition_number }} &bull; {{ current_date }}</div>
-        </div>
-        
-        <div class="greeting">
-            {{ digest.greeting }}
-        </div>
-        
-        <div class="articles">
-            {% for article in digest.articles %}
-            <div class="article">
-                <h2 class="article-title">{{ article.emoji }} {{ article.headline }}</h2>
-                <span class="article-source">Source: {{ article.source_name }}</span>
-                <p>{{ article.summary }}</p>
+    <div class="wrapper">
+        <div class="container">
+            <div class="accent-bar"></div>
+            
+            <div class="header">
+                <div class="brand">{{ newsletter_name }}<span class="brand-dot"></span></div>
+                <div class="tagline">High-signal AI intelligence for engineers &amp; builders</div>
+                <div class="meta-pills">
+                    <span>Edition #{{ edition_number }}</span>
+                    <span>&bull;</span>
+                    <span>{{ current_date }}</span>
+                    <span>&bull;</span>
+                    <span>⏱️ 3-min read</span>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="greeting">
+                    {{ digest.greeting }}
+                </div>
                 
-                {% if article.key_takeaways %}
-                <div class="takeaways">
-                    <h4>Key Takeaways</h4>
-                    <ul>
-                        {% for takeaway in article.key_takeaways %}
+                <div class="articles">
+                    {% for article in digest.articles %}
+                    <div class="article">
+                        <span class="source-pill">{{ article.source_name }}</span>
+                        <h2 class="article-title">{{ article.emoji }} {{ article.headline }}</h2>
+                        <p class="article-summary">{{ article.summary }}</p>
+                        
+                        {% if article.key_takeaways %}
+                        <div class="takeaways">
+                            <div class="takeaways-label">⚡ Key Takeaways</div>
+                            <ul>
+                                {% for takeaway in article.key_takeaways %}
+                                <li>{{ takeaway }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        <a href="{{ article.source_url }}" target="_blank" class="article-link">Read deep dive &rarr;</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                {% if digest.tool_of_the_day %}
+                <div class="tool-box">
+                    <span class="tool-badge">🛠️ Tool of the Day</span>
+                    <h3 class="tool-title">{{ digest.tool_of_the_day.emoji }} {{ digest.tool_of_the_day.headline }}</h3>
+                    <p class="tool-summary">{{ digest.tool_of_the_day.summary }}</p>
+                    {% if digest.tool_of_the_day.key_takeaways %}
+                    <ul style="margin: 0 0 14px 0; padding-left: 18px; font-size: 13px; color: #475569;">
+                        {% for takeaway in digest.tool_of_the_day.key_takeaways %}
                         <li>{{ takeaway }}</li>
                         {% endfor %}
                     </ul>
+                    {% endif %}
+                    <a href="{{ digest.tool_of_the_day.source_url }}" target="_blank" class="tool-button">Explore {{ digest.tool_of_the_day.source_name }} &rarr;</a>
                 </div>
                 {% endif %}
                 
-                <p><a href="{{ article.source_url }}" target="_blank">Read full article &rarr;</a></p>
+                {{ '{{SPONSOR_SLOT}}' }}
+                
+                <div class="feedback-box">
+                    <strong>Was today's brief useful?</strong><br>
+                    <span style="font-size: 15px; display: inline-block; margin-top: 6px;">
+                        <a href="mailto:{{ '{{ feedback_email }}' }}?subject=Feedback:+Great" style="text-decoration:none;">👍 Insightful</a> &nbsp;&bull;&nbsp; 
+                        <a href="mailto:{{ '{{ feedback_email }}' }}?subject=Feedback:+Could+be+better" style="text-decoration:none;">👎 Needs improvement</a>
+                    </span>
+                </div>
+                
+                <div class="closing">
+                    <p>{{ digest.closing }}</p>
+                </div>
             </div>
-            {% endfor %}
-        </div>
-        
-        {% if digest.tool_of_the_day %}
-        <div class="tool-box">
-            <div class="tool-tag">🛠️ Featured Tool of the Day</div>
-            <h3 style="margin: 0 0 10px 0; color: #1e3a8a;">{{ digest.tool_of_the_day.emoji }} {{ digest.tool_of_the_day.headline }}</h3>
-            <p style="margin: 0 0 10px 0;">{{ digest.tool_of_the_day.summary }}</p>
-            {% if digest.tool_of_the_day.key_takeaways %}
-            <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 14px; color: #3b82f6;">
-                {% for takeaway in digest.tool_of_the_day.key_takeaways %}
-                <li>{{ takeaway }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            <p><a href="{{ digest.tool_of_the_day.source_url }}" target="_blank" style="font-weight: bold;">Check out {{ digest.tool_of_the_day.source_name }} &rarr;</a></p>
-        </div>
-        {% endif %}
-        
-        {{ '{{SPONSOR_SLOT}}' }}
-        
-        <div class="closing">
-            <p>{{ digest.closing }}</p>
-        </div>
-        
-        <div class="footer">
-            <p>You are receiving this because you subscribed to {{ newsletter_name }}.</p>
-            <p>
-                <a href="{{ '{{ unsubscribe_url }}' }}">Unsubscribe</a> | 
-                <a href="{{ '{{ view_in_browser_url }}' }}">View in browser</a>
-            </p>
+            
+            <div class="footer">
+                <p>You received this because you subscribed to <strong>{{ newsletter_name }}</strong>.</p>
+                <p>
+                    <a href="{{ '{{ unsubscribe_url }}' }}">Unsubscribe</a> &bull; 
+                    <a href="{{ '{{ view_in_browser_url }}' }}">View in browser</a>
+                </p>
+                <p style="color: #cbd5e1; font-size: 11px;">&copy; {{ current_date.split()[-1] }} {{ newsletter_name }}. High signal, zero fluff.</p>
+            </div>
         </div>
     </div>
 </body>

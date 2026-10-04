@@ -27,4 +27,6 @@ FEED_REGISTRY: list[FeedSource] = [
     FeedSource("TLDR AI", "https://tldr.tech/ai/rss", "Newsletter"),
     FeedSource("ArXiv CS.AI", "https://rss.arxiv.org/rss/cs.AI", "Research"),
     FeedSource("Wired AI", "https://www.wired.com/feed/tag/ai/latest/rss", "Tech"),
+    FeedSource("Simon Willison AI", "https://simonwillison.net/atom/everything/", "Tech"),
+    FeedSource("MarkTechPost", "https://www.marktechpost.com/feed/", "Research"),
 ]
