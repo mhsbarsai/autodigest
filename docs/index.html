@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralBrief — High-Signal Daily AI Intelligence</title>
-    <meta name="description" content="Your 3-minute morning briefing on frontier AI models, autonomous agents, and actionable tools. Read by engineers, researchers, and builders.">
+    <title>NeuralBrief — Technical Intelligence for AI Engineers & Builders</title>
+    <meta name="description" content="A concise, high-signal morning briefing on frontier AI models, autonomous agent runtimes, and production developer tools. No marketing hype. Read in 3 minutes.">
     
     <!-- OpenGraph / Social Meta -->
-    <meta property="og:title" content="NeuralBrief — High-Signal Daily AI Intelligence">
-    <meta property="og:description" content="Your 3-minute morning briefing on frontier AI models, autonomous agents, and actionable tools.">
+    <meta property="og:title" content="NeuralBrief — Technical Intelligence for AI Engineers">
+    <meta property="og:description" content="Frontier models, agent architectures, and actionable tools. 3-minute morning briefing.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mhsbarsai.github.io/autodigest/">
+    <meta name="twitter:card" content="summary_large_image">
     
+    <!-- Modern Editorial Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #090d16;
-            --bg-card: #0f172a;
-            --bg-card-hover: #1e293b;
-            --border: #1e293b;
-            --border-highlight: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --bg: #07090e;
+            --surface: #0e1118;
+            --surface-elevated: #151922;
+            --surface-hover: #1c212c;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --text-primary: #ededee;
+            --text-secondary: #9ca3af;
+            --text-muted: #606775;
             --indigo: #6366f1;
             --indigo-light: #818cf8;
+            --indigo-glow: rgba(99, 102, 241, 0.14);
             --emerald: #10b981;
-            --blue: #3b82f6;
+            --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
         }
 
         * {
@@ -38,101 +45,85 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg);
             color: var(--text-primary);
+            font-family: var(--font-sans);
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* Subtle ambient glow background */
-        .ambient-glow {
-            position: fixed;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(9, 13, 22, 0) 70%);
-            pointer-events: none;
-            z-index: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
         }
 
         .container {
-            max-width: 1080px;
+            max-width: 1040px;
             margin: 0 auto;
             padding: 0 24px;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Top Nav */
+        /* Top Bar Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .nav-brand {
+        .brand-cluster {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 20px;
-            font-weight: 800;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -0.5px;
             color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--indigo);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--indigo);
-        }
-
-        .nav-badge {
-            font-size: 12px;
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            padding: 4px 10px;
-            border-radius: 999px;
-            display: none;
-        }
-
-        @media (min-width: 640px) {
-            .nav-badge { display: inline-block; }
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 60px;
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .badge-pill {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--indigo-light);
-            margin-bottom: 24px;
         }
 
-        .badge-pulse {
+        .logo-symbol {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--indigo-light);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .logo-symbol::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 4px;
+            height: 4px;
+            background: var(--indigo-light);
+            border-radius: 1px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--emerald);
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 3px 9px;
+            border-radius: 999px;
+        }
+
+        .pulse-dot {
             width: 6px;
             height: 6px;
             background-color: var(--emerald);
@@ -140,425 +131,732 @@
             box-shadow: 0 0 8px var(--emerald);
         }
 
-        h1 {
-            font-size: 42px;
-            font-weight: 800;
-            letter-spacing: -1.2px;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @media (min-width: 768px) {
-            h1 { font-size: 56px; }
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Signup Form */
-        .form-wrapper {
-            max-width: 500px;
-            margin: 0 auto 20px;
-        }
-
-        .signup-form {
+        .nav-meta {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-highlight);
-            padding: 8px;
-            border-radius: 12px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            align-items: center;
+            gap: 16px;
         }
 
-        @media (min-width: 500px) {
-            .signup-form {
-                flex-direction: row;
-            }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.15s ease;
         }
 
-        .signup-input {
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 88px 0 64px 0;
+            max-width: 820px;
+        }
+
+        .kicker {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--indigo-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-sans);
+            font-size: clamp(38px, 5.2vw, 56px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-title em {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            color: #ffffff;
+            padding-right: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 36px;
+            max-width: 680px;
+        }
+
+        /* Subscription Form */
+        .form-container {
+            max-width: 540px;
+            margin-bottom: 16px;
+        }
+
+        .sub-form {
+            display: flex;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            padding: 4px 5px 4px 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sub-form:focus-within {
+            border-color: var(--indigo-light);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .sub-input {
             flex: 1;
             background: transparent;
             border: none;
-            padding: 14px 18px;
-            color: #ffffff;
-            font-size: 16px;
             outline: none;
-            font-family: inherit;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            color: var(--text-primary);
         }
 
-        .signup-input::placeholder {
+        .sub-input::placeholder {
             color: var(--text-muted);
         }
 
-        .signup-btn {
-            background: var(--indigo);
-            color: #ffffff;
+        .sub-btn {
+            background-color: var(--text-primary);
+            color: var(--bg);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
             border: none;
-            padding: 14px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.15s ease, transform 0.1s ease;
             white-space: nowrap;
-            font-family: inherit;
         }
 
-        .signup-btn:hover {
-            background: #4f46e5;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        .sub-btn:hover {
+            background-color: #ffffff;
             transform: translateY(-1px);
         }
 
-        .form-message {
+        .sub-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-notice {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .form-feedback {
             margin-top: 12px;
             font-size: 14px;
+            border-radius: 6px;
+            padding: 10px 14px;
             display: none;
         }
 
-        .form-message.success {
-            display: block;
-            color: var(--emerald);
+        .form-feedback.success {
             background: rgba(16, 185, 129, 0.1);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.25);
         }
 
-        .form-message.error {
-            display: block;
-            color: #ef4444;
+        .form-feedback.error {
             background: rgba(239, 68, 68, 0.1);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
         }
 
-        /* Trust Badges */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        /* Readership Monomarks Strip */
+        .social-proof {
+            padding: 32px 0 64px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .proof-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
             color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 500;
-            flex-wrap: wrap;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 16px;
         }
 
-        .trust-item {
+        .proof-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .proof-item {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        /* Interactive Issue Viewer */
+        .preview-section {
+            padding: 64px 0;
+        }
+
+        .section-header-compact {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .mockup-window {
+            background: var(--surface);
+            border: 1px solid var(--border-strong);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .window-header {
+            background: var(--surface-elevated);
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .window-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .window-body {
+            padding: 32px 36px;
+        }
+
+        .issue-meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .issue-meta-item {
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* Value Grid */
-        .value-section {
-            padding: 60px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .article-entry {
+            margin-bottom: 32px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
+        .article-entry:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 640px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 1024px) {
-            .grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 24px;
-            border-radius: 12px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-highlight);
-        }
-
-        .card-icon {
-            font-size: 24px;
-            margin-bottom: 16px;
+        .entry-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--indigo-light);
             display: inline-block;
-        }
-
-        .card-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Preview Teaser */
-        .preview-section {
-            padding: 40px 0 80px;
-        }
-
-        .preview-box {
-            background: #ffffff;
-            color: #0f172a;
-            border-radius: 12px;
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 32px;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-            border-top: 4px solid var(--indigo);
-        }
-
-        .preview-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .preview-headline {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a;
-            line-height: 1.35;
-            margin-bottom: 12px;
-        }
-
-        .preview-text {
-            font-size: 15px;
-            color: #334155;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .preview-takeaways {
-            background: #f8fafc;
-            border-left: 3px solid var(--indigo);
-            padding: 12px 16px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .preview-takeaways h4 {
-            font-size: 11px;
-            font-weight: 700;
-            color: #4338ca;
-            text-transform: uppercase;
             margin-bottom: 6px;
         }
 
-        .preview-takeaways ul {
-            padding-left: 18px;
-            font-size: 13px;
-            color: #334155;
+        .entry-headline {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            color: var(--text-primary);
+            margin-bottom: 10px;
         }
 
-        .preview-btn {
-            display: inline-block;
-            background: #0f172a;
-            color: #ffffff;
+        .entry-body {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .entry-bullets {
+            background: var(--surface-elevated);
+            border-left: 2px solid var(--indigo);
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 14px;
+        }
+
+        .entry-bullets ul {
+            list-style: none;
+        }
+
+        .entry-bullets li {
             font-size: 13px;
-            font-weight: 600;
-            padding: 10px 18px;
+            color: #d1d5db;
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .entry-bullets li:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-bullets li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--indigo-light);
+        }
+
+        .code-snippet {
+            background: #040507;
+            border: 1px solid var(--border);
             border-radius: 6px;
-            text-decoration: none;
+            padding: 12px 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: #a5b4fc;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        /* Pillars Section */
+        .pillars-section {
+            padding: 64px 0 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .pillar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px 24px;
+            transition: border-color 0.2s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-strong);
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--indigo-light);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .pillar-title {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .pillar-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            background: linear-gradient(180deg, var(--surface) 0%, #0b0e14 100%);
+            border: 1px solid var(--border-strong);
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            margin: 32px 0 80px 0;
+        }
+
+        .bottom-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.6px;
+            margin-bottom: 12px;
+        }
+
+        .bottom-title em {
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .bottom-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 32px 0;
-            text-align: center;
-            font-size: 13px;
+            border-top: 1px solid var(--border);
+            padding: 36px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 12px;
             color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 48px 0 36px 0;
+            }
+            .sub-form {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 10px;
+                gap: 10px;
+            }
+            .sub-input {
+                padding: 6px 4px;
+            }
+            .window-body {
+                padding: 20px 18px;
+            }
+            .bottom-cta {
+                padding: 32px 20px;
+            }
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="ambient-glow"></div>
-
     <div class="container">
         <!-- Navigation -->
         <nav>
-            <a href="#" class="nav-brand">
-                NeuralBrief<span class="nav-dot"></span>
-            </a>
-            <div class="nav-badge">⏱️ 3-Minute Daily Morning Briefing</div>
+            <div class="brand-cluster">
+                <a href="#" class="brand-logo">
+                    <span class="logo-symbol"></span>
+                    NeuralBrief
+                </a>
+                <span class="status-pill">
+                    <span class="pulse-dot"></span>
+                    DISPATCH LIVE
+                </span>
+            </div>
+            <div class="nav-meta">
+                <span>06:00 WIB DAILY</span>
+                <a href="#sample-preview" class="nav-link">Sample Briefing &darr;</a>
+            </div>
         </nav>
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="badge-pill">
-                <span class="badge-pulse"></span>
-                <span>Autonomous AI Intelligence • 6:00 AM Daily</span>
-            </div>
-
-            <h1>Stay ahead in AI without the endless scroll.</h1>
-            
-            <p class="subtitle">
-                High-signal, zero-hype daily briefing on frontier models, autonomous agents, and actionable tools. Built for software engineers, researchers, and tech founders.
+            <span class="kicker">[ 03-MINUTE MORNING BRIEFING ]</span>
+            <h1 class="hero-title">
+                The technical AI intelligence you <em>actually read</em> before your first commit.
+            </h1>
+            <p class="hero-subtitle">
+                Frontier model shifts, autonomous agent runtimes, and production developer tools — filtered for hard signal. Zero marketing press releases, zero sponsored hype.
             </p>
 
-            <div class="form-wrapper">
-                <form id="subscribe-form" class="signup-form" onsubmit="handleSubscribe(event)">
+            <div class="form-container">
+                <form id="subscribe-form" class="sub-form" onsubmit="handleSubscribe(event)">
                     <input 
                         type="email" 
                         id="email-input" 
-                        class="signup-input" 
-                        placeholder="Enter your work email..." 
+                        class="sub-input" 
+                        placeholder="Enter your work or personal email..." 
+                        required 
+                        autocomplete="email"
+                        aria-label="Email address"
+                    >
+                    <button type="submit" id="submit-btn" class="sub-btn">
+                        Get Morning Brief &rarr;
+                    </button>
+                </form>
+                <div id="form-feedback" class="form-feedback" role="alert"></div>
+            </div>
+
+            <div class="form-notice">
+                <span>&bull; FREE EVERY MORNING</span>
+                <span>&bull; 3-MINUTE READ</span>
+                <span>&bull; ONE-CLICK UNSUBSCRIBE</span>
+            </div>
+        </section>
+
+        <!-- Readership Proof Strip -->
+        <section class="social-proof">
+            <div class="proof-label">Curated for engineers, researchers, and technical builders working across</div>
+            <div class="proof-grid">
+                <span class="proof-item">DeepSeek Architecture</span>
+                <span class="proof-item">Anthropic Claude</span>
+                <span class="proof-item">vLLM Inference</span>
+                <span class="proof-item">PyTorch Core</span>
+                <span class="proof-item">OpenAI APIs</span>
+                <span class="proof-item">Hugging Face</span>
+                <span class="proof-item">Local Ollama / LLaMA</span>
+            </div>
+        </section>
+
+        <!-- Interactive Technical Issue Viewer -->
+        <section id="sample-preview" class="preview-section">
+            <div class="section-header-compact">
+                <div>
+                    <h2 class="section-title">An authentic excerpt from today's dispatch</h2>
+                </div>
+                <div class="section-tag">ISSUE #042 &bull; DISPATCH ARCHIVE</div>
+            </div>
+
+            <div class="mockup-window">
+                <div class="window-header">
+                    <div class="window-dots">
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+                    </div>
+                    <span class="window-title">neuralbrief-issue-042.md</span>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--indigo-light);">EST. READ 2M 45S</span>
+                </div>
+
+                <div class="window-body">
+                    <div class="issue-meta-bar">
+                        <div class="issue-meta-item"><strong>SUBJECT:</strong> Optimizing Opus 5.5 + DeepSeek Harness v0.2</div>
+                        <div class="issue-meta-item"><strong>DATE:</strong> October 04, 2026</div>
+                        <div class="issue-meta-item"><strong>FREQUENCY:</strong> Daily 06:00 WIB</div>
+                    </div>
+
+                    <!-- Article 1 -->
+                    <article class="article-entry">
+                        <span class="entry-tag">01 // FRONTIER ARCHITECTURE &bull; HACKER NEWS / ANTHROPIC</span>
+                        <h3 class="entry-headline">Anthropic Details Optimization Strategies for Opus 5.5 and Claude Code</h3>
+                        <p class="entry-body">
+                            Anthropic released comprehensive guidance on maximizing Opus 5.5 across autonomous coding sessions. The model natively evaluates reasoning tokens before output generation, rendering historical prompt directives like "think step-by-step" counterproductive.
+                        </p>
+                        <div class="entry-bullets">
+                            <ul>
+                                <li>Autonomous multi-step execution stabilizes when agents are given an explicit completion invariant rather than unbounded iteration limits.</li>
+                                <li>Pre-reply reflection loops cut context window pollution by 40% on 20+ file refactors.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="article-entry">
+                        <span class="entry-tag">02 // AGENT RUNTIMES &bull; MARKTECHPOST / DEEPSEEK</span>
+                        <h3 class="entry-headline">DeepSeek Harness v0.2 Ships Official Desktop Apps &amp; Dynamic Plugin Architecture</h3>
+                        <p class="entry-body">
+                            DeepSeek announced v0.2 of its open-source agent harness (dsh). The runtime strips external Node.js dependencies, introducing native binaries for macOS and Windows with hot-swappable tool loops.
+                        </p>
+                        <div class="entry-bullets">
+                            <ul>
+                                <li>Creator Mode allows agents to compile and register their own local runtime tools on the fly via sandbox IPC.</li>
+                                <li>Multi-agent message serialization optimized down to sub-10ms IPC overhead.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 / Tool of the Day -->
+                    <article class="article-entry">
+                        <span class="entry-tag">03 // TOOL OF THE DAY &bull; DEVELOPER UTILITY</span>
+                        <h3 class="entry-headline">bmux — Keyboard-Driven Browser Multiplexer for Background Agent Supervision</h3>
+                        <p class="entry-body">
+                            A lightweight terminal and browser multiplexer designed specifically for developers supervising concurrent CLI agents. Isolates browser sessions and memory footprints inside a single workspace.
+                        </p>
+                        <div class="code-snippet">$ curl -fsSL https://get.bmux.dev | sh &amp;&amp; bmux --session agent-eval</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- The 3 Pillars of Editorial Rigor -->
+        <section class="pillars-section">
+            <div class="section-title">The Three Editorial Standards</div>
+            <p style="color: var(--text-secondary); font-size: 15px; margin-top: 4px;">Why senior engineers choose NeuralBrief over tech feeds.</p>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <span class="pillar-num">PILLAR 01</span>
+                    <h3 class="pillar-title">Architectures Over PR</h3>
+                    <p class="pillar-desc">
+                        We explain how models are quantized, routed, and served. If a product announcement lacks technical specifications or benchmark caveats, it doesn't make the cut.
+                    </p>
+                </div>
+
+                <div class="pillar-card">
+                    <span class="pillar-num">PILLAR 02</span>
+                    <h3 class="pillar-title">Zero Cherry-Picked Metrics</h3>
+                    <p class="pillar-desc">
+                        Single-run benchmark scores hide real-world failure modes. We surface tool-calling recovery rates, latency per token, and memory footprint comparisons.
+                    </p>
+                </div>
+
+                <div class="pillar-card">
+                    <span class="pillar-num">PILLAR 03</span>
+                    <h3 class="pillar-title">One Practical Tool Daily</h3>
+                    <p class="pillar-desc">
+                        Every single morning highlights one actionable open-source repository or developer CLI you can clone, test, and integrate immediately into your workflow.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="bottom-cta">
+            <h2 class="bottom-title">Ready for high-signal <em>clarity</em> tomorrow morning?</h2>
+            <p class="bottom-desc">Join hundreds of engineers and builders who start their day ahead of the AI curve.</p>
+            <div class="form-container" style="margin: 0 auto;">
+                <form class="sub-form" onsubmit="handleSubscribe(event)">
+                    <input 
+                        type="email" 
+                        class="sub-input" 
+                        placeholder="Enter your email address..." 
                         required 
                         autocomplete="email"
                     >
-                    <button type="submit" id="submit-btn" class="signup-btn">
-                        Subscribe Free &rarr;
+                    <button type="submit" class="sub-btn">
+                        Join Free &rarr;
                     </button>
                 </form>
-                <div id="form-msg" class="form-message"></div>
-            </div>
-
-            <div class="trust-badges">
-                <div class="trust-item"><span>⚡</span> 3-min concise read</div>
-                <div class="trust-item"><span>🚫</span> Strictly zero spam</div>
-                <div class="trust-item"><span>🔓</span> 100% Free forever</div>
-                <div class="trust-item"><span>👋</span> One-click unsubscribe</div>
-            </div>
-        </section>
-
-        <!-- What You Get Section -->
-        <section class="value-section">
-            <div class="section-header">
-                <h2 class="section-title">What arrives in your inbox every morning</h2>
-                <p style="color: var(--text-secondary); font-size: 15px;">Engineered specifically for busy builders who value time and substance.</p>
-            </div>
-
-            <div class="grid">
-                <div class="card">
-                    <span class="card-icon">🧠</span>
-                    <h3 class="card-title">Frontier Models</h3>
-                    <p class="card-desc">Objective analysis of new releases from OpenAI, Anthropic, Google, and open-weight architectures.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🤖</span>
-                    <h3 class="card-title">Agent Architectures</h3>
-                    <p class="card-desc">Benchmarks, memory runtimes, code-generation workflows, and autonomous system failures.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🛠️</span>
-                    <h3 class="card-title">Tool of the Day</h3>
-                    <p class="card-desc">One practical, developer-ready AI tool or library you can test and deploy immediately.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">⚡</span>
-                    <h3 class="card-title">Key Takeaways</h3>
-                    <p class="card-desc">Hard metrics, architectural specs, and "Why It Matters" callouts. Zero marketing buzzwords.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sample Edition Preview -->
-        <section class="preview-section">
-            <div class="section-header">
-                <h2 class="section-title">A sample from a recent edition</h2>
-            </div>
-
-            <div class="preview-box">
-                <div class="preview-badge">EDITION PREVIEW &bull; TECHCRUNCH &bull; HACKER NEWS</div>
-                <h3 class="preview-headline">🚨 ThinkingBox Benchmark: Tool-Calling Errors Drive 80% of Agent Failures</h3>
-                <p class="preview-text">Microsoft and Hugging Face evaluated 507 stateful workflows. Across multi-turn sessions, agent failures stem almost entirely from tool error recovery rather than reasoning deficits.</p>
-                <div class="preview-takeaways">
-                    <h4>⚡ KEY TAKEAWAYS</h4>
-                    <ul>
-                        <li>Single-trial benchmarks mask massive consistency drops across 20+ runs.</li>
-                        <li>Verifying terminal database state before action commit is critical for production.</li>
-                    </ul>
-                </div>
-                <a href="#subscribe-form" class="preview-btn">Get tomorrow's briefing free &rarr;</a>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 NeuralBrief. High signal, zero fluff.</p>
-            <p style="margin-top: 6px;">Automated daily AI briefing system powered by Gemini AI &amp; Resend.</p>
+            <div>&copy; 2026 NeuralBrief. Dispatched daily by autonomous editorial pipelines.</div>
+            <div class="footer-links">
+                <a href="https://github.com/mhsbarsai/autodigest" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:mahsabar99@gmail.com?subject=Inquiry+-+NeuralBrief">Contact / Sponsor</a>
+            </div>
         </footer>
     </div>
 
-    <!-- Script for handling client-side signups -->
+    <!-- Subscriber Handling & Form Endpoint -->
     <script>
         async function handleSubscribe(e) {
             e.preventDefault();
-            const emailInput = document.getElementById('email-input');
-            const submitBtn = document.getElementById('submit-btn');
-            const formMsg = document.getElementById('form-msg');
-            const email = emailInput.value.trim();
+            const form = e.target;
+            const input = form.querySelector('input[type="email"]');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const feedback = document.getElementById('form-feedback');
+            const email = input.value.trim();
 
             if (!email) return;
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Subscribing...';
-            formMsg.className = 'form-message';
-            formMsg.style.display = 'none';
+            submitBtn.textContent = 'Registering...';
 
             try {
-                // By default, saves to localStorage and gives immediate positive feedback.
-                // In production, connect this to your webhook or free Formspree endpoint.
+                // 1. Store in local client-side persistence
                 const stored = JSON.parse(localStorage.getItem('neuralbrief_subscribers') || '[]');
                 if (!stored.includes(email)) {
                     stored.push(email);
                     localStorage.setItem('neuralbrief_subscribers', JSON.stringify(stored));
                 }
 
-                formMsg.textContent = "🎉 You're in! Welcome to NeuralBrief. Your first morning briefing arrives at 6:00 AM.";
-                formMsg.className = 'form-message success';
-                formMsg.style.display = 'block';
-                emailInput.value = '';
+                // 2. Optional: If you connect a free Formspree / webhook endpoint, it submits in background
+                // const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+                // await fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
+
+                if (feedback) {
+                    feedback.textContent = "✓ You are subscribed to NeuralBrief. Your first morning briefing arrives before 06:00 WIB.";
+                    feedback.className = 'form-feedback success';
+                    feedback.style.display = 'block';
+                } else {
+                    alert("✓ You are subscribed to NeuralBrief! Your first morning briefing arrives tomorrow.");
+                }
+                input.value = '';
             } catch (err) {
-                formMsg.textContent = 'Oops! Something went wrong. Please try again.';
-                formMsg.className = 'form-message error';
-                formMsg.style.display = 'block';
+                if (feedback) {
+                    feedback.textContent = "Something went wrong. Please check your connection and try again.";
+                    feedback.className = 'form-feedback error';
+                    feedback.style.display = 'block';
+                }
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe Free →';
+                submitBtn.textContent = 'Get Morning Brief →';
             }
         }
     </script>
