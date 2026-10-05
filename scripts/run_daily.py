@@ -35,7 +35,7 @@ def main() -> None:
     logger.info("PRE-FLIGHT SECRETS CHECK:")
     logger.info(f"  • GEMINI_API_KEY  : {'[OK] (Configured, ' + str(len(gemini_key)) + ' chars)' if gemini_key else '[CRITICAL: MISSING OR EMPTY]'}")
     logger.info(f"  • RESEND_API_KEY  : {'[OK] (Configured, ' + str(len(resend_key)) + ' chars)' if resend_key else '[CRITICAL: MISSING OR EMPTY]'}")
-    logger.info(f"  • RESEND_TO_EMAIL : {'[OK] (' + to_email + ')' if to_email else '[NOT SET - will fallback to mahsabar99@gmail.com]'}")
+    logger.info(f"  • RESEND_TO_EMAIL : {'[OK] (' + to_email + ')' if to_email else '[NOT SET - will fallback to mahsabar98@gmail.com]'}")
     logger.info("=" * 60)
 
     if not gemini_key:
