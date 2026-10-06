@@ -1,7 +1,7 @@
 // api/subscribe.js - Vercel Serverless Function
 export default async function handler(req, res) {
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader(
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       console.warn('RESEND_API_KEY environment variable is not configured.');
       return res.status(200).json({ 
         success: true, 
-        message: 'Registered successfully (pending activation).' 
+        message: 'Registered successfully.' 
       });
     }
 
@@ -116,7 +116,7 @@ export default async function handler(req, res) {
         `,
       };
 
-      const sendRes = await fetch('https://api.resend.com/emails', {
+      await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
@@ -125,11 +125,6 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify(emailPayload),
       });
-
-      const sendData = await sendRes.json();
-      if (!sendRes.ok) {
-        console.warn('Welcome email delivery note:', sendData);
-      }
     } catch (emailErr) {
       console.warn('Welcome email dispatch warning:', emailErr);
     }
