@@ -7,6 +7,7 @@ from __future__ import annotations
 import datetime
 import json
 import logging
+import os
 import re
 from pathlib import Path
 from typing import TypedDict
@@ -98,8 +99,44 @@ class SubscriberManager:
             logger.info(f"Unsubscribed: {clean_email}")
         return found
 
+    def sync_from_resend(self) -> None:
+        """Attempt to fetch registered contacts from Resend Contacts API and merge locally."""
+        api_key = os.getenv("RESEND_API_KEY", "").strip()
+        if not api_key:
+            return
+
+        try:
+            import requests
+
+            resp = requests.get(
+                "https://api.resend.com/contacts",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "User-Agent": "Creavora/1.0",
+                },
+                timeout=10,
+            )
+            if resp.status_code == 200:
+                payload = resp.json()
+                raw_contacts = payload.get("data", [])
+                if isinstance(raw_contacts, dict) and "data" in raw_contacts:
+                    raw_contacts = raw_contacts.get("data", [])
+
+                if isinstance(raw_contacts, list):
+                    added_count = 0
+                    for c in raw_contacts:
+                        if isinstance(c, dict) and not c.get("unsubscribed", False):
+                            c_email = c.get("email", "")
+                            if c_email and self.add_subscriber(c_email):
+                                added_count += 1
+                    if added_count > 0:
+                        logger.info(f"Synced {added_count} new subscriber(s) from Resend Contacts.")
+        except Exception as e:
+            logger.debug(f"Resend contact sync skipped: {e}")
+
     def get_active_subscribers(self) -> list[str]:
         """Return list of all active subscriber email addresses."""
+        self.sync_from_resend()
         records = self._load_records()
         return [
             r["email"]

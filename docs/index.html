@@ -800,6 +800,7 @@
                         Join Free &rarr;
                     </button>
                 </form>
+                <div id="bottom-form-feedback" class="form-feedback" role="alert"></div>
             </div>
         </section>
 
@@ -820,43 +821,63 @@
             const form = e.target;
             const input = form.querySelector('input[type="email"]');
             const submitBtn = form.querySelector('button[type="submit"]');
-            const feedback = document.getElementById('form-feedback');
+            const originalBtnText = submitBtn.textContent;
+            
+            // Look for closest form feedback element
+            const feedback = form.parentElement.querySelector('.form-feedback') || document.getElementById('form-feedback');
             const email = input.value.trim();
 
             if (!email) return;
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Registering...';
+            if (feedback) {
+                feedback.style.display = 'none';
+            }
 
             try {
-                // 1. Store in local client-side persistence
+                // Call Vercel Serverless API
+                const res = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email }),
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || 'Failed to register subscriber');
+                }
+
+                // Store in client-side persistence as local backup
                 const stored = JSON.parse(localStorage.getItem('creavora_subscribers') || '[]');
                 if (!stored.includes(email)) {
                     stored.push(email);
                     localStorage.setItem('creavora_subscribers', JSON.stringify(stored));
                 }
 
-                // 2. Optional: If you connect a free Formspree / webhook endpoint, it submits in background
-                // const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-                // await fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
-
                 if (feedback) {
-                    feedback.textContent = "✓ You are subscribed to Creavora. Your first morning briefing arrives before 06:00 WIB.";
+                    feedback.textContent = "✓ Welcome to Creavora! Confirmation sent — first morning brief arrives before 06:00 WIB.";
                     feedback.className = 'form-feedback success';
                     feedback.style.display = 'block';
                 } else {
-                    alert("✓ You are subscribed to Creavora! Your first morning briefing arrives tomorrow.");
+                    alert("✓ Welcome to Creavora! Check your inbox for confirmation.");
                 }
                 input.value = '';
             } catch (err) {
+                console.error('Subscription error:', err);
                 if (feedback) {
-                    feedback.textContent = "Something went wrong. Please check your connection and try again.";
+                    feedback.textContent = err.message || "Something went wrong. Please try again.";
                     feedback.className = 'form-feedback error';
                     feedback.style.display = 'block';
+                } else {
+                    alert("Subscription failed: " + err.message);
                 }
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Get Morning Brief →';
+                submitBtn.textContent = originalBtnText;
             }
         }
     </script>
