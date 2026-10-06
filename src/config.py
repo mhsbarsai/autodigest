@@ -32,7 +32,7 @@ class ResendConfig:
 
     api_key: str = field(repr=False, default_factory=lambda: os.environ.get("RESEND_API_KEY", ""))
     from_email: str = field(
-        default_factory=lambda: os.environ.get("RESEND_FROM_EMAIL", "Creavora <onboarding@resend.dev>")
+        default_factory=lambda: os.environ.get("RESEND_FROM_EMAIL", "Creavora <newsletter@creavora.my.id>")
     )
     to_email: str = field(default_factory=lambda: os.environ.get("RESEND_TO_EMAIL", ""))
     audience_id: str = field(default_factory=lambda: os.environ.get("RESEND_AUDIENCE_ID", ""))

@@ -69,7 +69,7 @@ export default async function handler(req, res) {
 
     // 2. Dispatch Welcome Email to the new subscriber
     try {
-      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Creavora <onboarding@resend.dev>';
+      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Creavora <newsletter@creavora.my.id>';
       
       const emailPayload = {
         from: fromEmail,
