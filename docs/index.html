@@ -39,6 +39,17 @@
   }
   </script>
 
+  <!-- Privacy-friendly Web Analytics & Conversion Event Tracker -->
+  <script>
+    window.creavoraTrack = function(eventName, data) {
+      try {
+        console.debug(`[Analytics] ${eventName}:`, data);
+        if (typeof window.gtag === 'function') window.gtag('event', eventName, data);
+        if (typeof window.va === 'function') window.va('event', { name: eventName, data });
+      } catch (e) {}
+    };
+  </script>
+
   <!-- Typography: Editorial Newsreader + Bricolage Grotesque + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1825,6 +1836,7 @@ def _fused_attention_hopper_kernel(
 
           if (response.ok && (!data || data.success !== false)) {
             // Success state
+            window.creavoraTrack('subscribe_success', { email_domain: emailValue.split('@')[1] || 'unknown' });
             showFeedback(
               feedback, 
               'success', 

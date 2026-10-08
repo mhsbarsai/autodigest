@@ -170,6 +170,62 @@ def dispatch_telegram(bot_token: str, chat_id: str, message: str) -> bool:
         return False
 
 
+def dispatch_twitter(
+    api_key: str,
+    api_secret: str,
+    access_token: str,
+    access_token_secret: str,
+    tweets: list[str],
+) -> list[str]:
+    """Publish a multi-part thread to X / Twitter via Twitter API v2.
+
+    Returns list of created tweet IDs.
+    """
+    if not api_key or not api_secret or not access_token or not access_token_secret or not tweets:
+        return []
+
+    try:
+        from requests_oauthlib import OAuth1
+
+        auth = OAuth1(
+            client_key=api_key,
+            client_secret=api_secret,
+            resource_owner_key=access_token,
+            resource_owner_secret=access_token_secret,
+        )
+
+        tweet_ids: list[str] = []
+        last_id: str | None = None
+
+        for tweet_text in tweets:
+            payload: dict[str, Any] = {"text": tweet_text}
+            if last_id:
+                payload["reply"] = {"in_reply_to_tweet_id": last_id}
+
+            resp = requests.post(
+                "https://api.twitter.com/2/tweets",
+                auth=auth,
+                json=payload,
+                headers={"Content-Type": "application/json"},
+                timeout=15,
+            )
+            if resp.status_code in (200, 201):
+                data = resp.json().get("data", {})
+                last_id = data.get("id")
+                if last_id:
+                    tweet_ids.append(last_id)
+            else:
+                logger.warning(f"Failed to post tweet to X/Twitter: {resp.status_code} - {resp.text}")
+                break
+
+        if tweet_ids:
+            logger.info(f"Successfully published {len(tweet_ids)}-part thread to X/Twitter! (Root Tweet ID: {tweet_ids[0]})")
+        return tweet_ids
+    except Exception as e:
+        logger.warning(f"Error publishing to X/Twitter: {e}")
+        return []
+
+
 def distribute_social(
     digest: NewsletterDigest,
     landing_url: str = DEFAULT_LANDING_URL,
@@ -228,7 +284,15 @@ def distribute_social(
         tg_chat = os.getenv("TELEGRAM_CHAT_ID", "")
         if tg_token and tg_chat:
             dispatch_telegram(tg_token, tg_chat, teasers["telegram_message"])
+
+        # 5. Automatic push to X / Twitter Thread (if TWITTER_* credentials are set)
+        tw_key = os.getenv("TWITTER_API_KEY", "").strip()
+        tw_secret = os.getenv("TWITTER_API_SECRET", "").strip()
+        tw_token = os.getenv("TWITTER_ACCESS_TOKEN", "").strip()
+        tw_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "").strip()
+        if tw_key and tw_secret and tw_token and tw_token_secret:
+            dispatch_twitter(tw_key, tw_secret, tw_token, tw_token_secret, teasers["x_thread"])
     else:
-        logger.info("Dry-run mode: skipped Discord/Telegram broadcast.")
+        logger.info("Dry-run mode: skipped Discord/Telegram/Twitter broadcast.")
 
     return teasers
