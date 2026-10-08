@@ -31,11 +31,18 @@ def main() -> None:
     gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
     resend_key = os.getenv("RESEND_API_KEY", "").strip()
     to_email = os.getenv("RESEND_TO_EMAIL", "").strip()
+    discord_url = os.getenv("DISCORD_WEBHOOK_URL", "").strip()
+    tg_token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    tg_chat = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    twitter_key = os.getenv("TWITTER_API_KEY", "").strip()
 
     logger.info("PRE-FLIGHT SECRETS CHECK:")
     logger.info(f"  • GEMINI_API_KEY  : {'[OK] (Configured, ' + str(len(gemini_key)) + ' chars)' if gemini_key else '[CRITICAL: MISSING OR EMPTY]'}")
     logger.info(f"  • RESEND_API_KEY  : {'[OK] (Configured, ' + str(len(resend_key)) + ' chars)' if resend_key else '[CRITICAL: MISSING OR EMPTY]'}")
     logger.info(f"  • RESEND_TO_EMAIL : {'[OK] (' + to_email + ')' if to_email else '[NOT SET - will fallback to mahsabar98@gmail.com]'}")
+    logger.info(f"  • TELEGRAM        : {'[ENABLED] (Channel/Chat: ' + tg_chat + ')' if (tg_token and tg_chat) else '[DISABLED / NOT CONFIGURED]'}")
+    logger.info(f"  • DISCORD         : {'[ENABLED] (Webhook active)' if discord_url else '[DISABLED / NOT CONFIGURED]'}")
+    logger.info(f"  • X / TWITTER     : {'[ENABLED] (API configured)' if twitter_key else '[DISABLED / NOT CONFIGURED]'}")
     logger.info("=" * 60)
 
     if not gemini_key:
