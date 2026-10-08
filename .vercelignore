@@ -1,14 +1,14 @@
-# Ignore Python backend and automation pipeline from Vercel deployment
-src
-scripts
-tests
-templates
-data
-output
-requirements.txt
-.venv
-.pytest_cache
-.github
-.env
-.env.example
-PRD.md
+# Ignore Python backend and automation pipeline from Vercel deployment (root only)
+/src
+/scripts
+/tests
+/templates
+/data
+/output
+/requirements.txt
+/.venv
+/.pytest_cache
+/.github
+/.env
+/.env.example
+/PRD.md
