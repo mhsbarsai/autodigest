@@ -1,0 +1,6 @@
+# Creavora Autonomous Search & Crawler Configuration
+User-agent: *
+Allow: /
+
+# Canonical Sitemap & RSS Feed
+Sitemap: https://creavora.my.id/sitemap.xml

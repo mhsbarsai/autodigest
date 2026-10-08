@@ -1,178 +1,125 @@
-# 🤖 AutoDigest — Fully Automated AI Newsletter System
+# ⚡ Creavora — Autonomous Technical AI Intelligence Publication
 
-> **A 100% autonomous, zero-maintenance newsletter engine powered by Google Gemini AI, Beehiiv, and Google Cloud Functions.**
+<div align="center">
 
----
+[![Website](https://img.shields.io/badge/Website-creavora.my.id-amber?style=for-the-badge&logo=googlechrome&logoColor=white)](https://creavora.my.id)
+[![Telegram](https://img.shields.io/badge/Telegram-@CreavoraAI-blue?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/CreavoraAI)
+[![X / Twitter](https://img.shields.io/badge/X-@creavora__-black?style=for-the-badge&logo=x&logoColor=white)](https://x.com/creavora_)
+[![Cost](https://img.shields.io/badge/Cost-$0%2Fmonth-emerald?style=for-the-badge&logo=cashapp&logoColor=white)](https://creavora.my.id)
+[![License](https://img.shields.io/badge/License-MIT-slate?style=for-the-badge)](LICENSE)
 
-## 📖 Overview
+<br/>
 
-**AutoDigest** runs every morning on autopilot:
-1. **Scrapes & Ingests:** Fetches 30–50 trending tech & AI stories from 15+ curated RSS feeds.
-2. **Deduplicates:** Filters out any article previously published using cryptographic hashing.
-3. **AI Curation & Scoring:** Uses **Gemini 2.5 Flash** to evaluate and rank articles by relevance and impact.
-4. **AI Synthesis:** Summarizes the top 3–5 stories with catchy headlines, key takeaways, and a "Tool of the Day".
-5. **Assembly:** Renders a mobile-responsive, email-client-optimized HTML template with automatic affiliate links.
-6. **Publishing:** Automatically schedules and blasts the newsletter to subscribers via **Beehiiv REST API**.
+**The Technical AI Briefing You Read Before Your First Commit.**  
+*Autonomous 3-minute morning briefings filtering arXiv preprints, model architecture shifts, GPU kernels, and developer tools. Strictly zero PR hype. 100% hard engineering signal.*
 
-**Your operational effort:** 0 minutes/day. Check the dashboard once a week to track subscriber growth and sponsorship revenue.
-
----
-
-## 💰 Operating Cost: $0.00 / month
-
-AutoDigest is engineered to operate strictly within the **Always Free** tiers of every provider:
-
-| Service | Free Tier Allowance | Our Daily Usage | Monthly Cost |
-|---|---|---|:---:|
-| **Google Gemini API** | 1,500 requests / day | 2–3 requests / day | **$0.00** |
-| **Resend** (or Beehiiv) | 3,000 emails / month (100/day) | 1 daily blast | **$0.00** |
-| **Google Cloud Functions** | 2,000,000 invocations / month | 30 invocations / month | **$0.00** |
-| **Google Cloud Scheduler** | 3 free cron jobs | 1 daily cron job | **$0.00** |
-| **Google Cloud Storage** | 5 GB standard storage | < 1 MB cache | **$0.00** |
+</div>
 
 ---
 
-## 🚀 Quick Start (5-Minute Local Setup)
+## 🏛️ Live Production Infrastructure
+
+| Platform | Endpoint / Handle | Status |
+| :--- | :--- | :---: |
+| **Official Web Publication** | [https://creavora.my.id](https://creavora.my.id) | 🟢 Live (HTTPS) |
+| **Telegram Channel** | [@CreavoraAI](https://t.me/CreavoraAI) | 🟢 Broadcast Active |
+| **X / Twitter Teasers** | [@creavora_](https://x.com/creavora_) | 🟢 Daily Threads |
+| **RSS 2.0 Syndication** | [https://creavora.my.id/feed.xml](https://creavora.my.id/feed.xml) | 🟢 Auto-updating |
+| **Search Engine Sitemap** | [https://creavora.my.id/sitemap.xml](https://creavora.my.id/sitemap.xml) | 🟢 IndexNow Verified |
+| **Daily Email Delivery** | `Creavora <newsletter@creavora.my.id>` | 🟢 DKIM/DMARC Verified |
+
+---
+
+## ⚙️ Architecture & Autonomous Pipeline
+
+Every morning at **23:00 UTC (06:00 AM WIB)**, GitHub Actions triggers the autonomous pipeline with zero human intervention:
+
+```
+┌────────────────────────────────────────────────────────┐
+│ 1. INGESTION & MONITORING                              │
+│    • arXiv CS.AI, CL, LG, NE preprints                 │
+│    • Hacker News Show & Top AI threads                 │
+│    • Hugging Face Models & GitHub Trending             │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────┐
+│ 2. DEDUPLICATION & FILTERING                           │
+│    • SHA-256 fingerprint matching against seen history │
+│    • Strips 100% marketing fluff & PR claims          │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────┐
+│ 3. COGNITIVE SYNTHESIS (Google Gemini Flash-Lite)      │
+│    • Extracts latency, VRAM, and kernel trade-offs     │
+│    • Synthesizes code reproduction snippets            │
+│    • Nominates open-source Tool of the Day             │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────┐
+│ 4. MULTI-CHANNEL AUTONOMOUS BROADCAST                  │
+│    ├─► Email Blast: Resend API (DKIM/DMARC verified)   │
+│    ├─► Web Publication: Vercel Edge (creavora.my.id)   │
+│    ├─► Telegram Channel: Instant push to @CreavoraAI   │
+│    ├─► RSS 2.0 Feed: Auto-updates docs/feed.xml        │
+│    └─► Social Copy: X thread & LinkedIn in artifacts   │
+└────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 💰 Operating Cost: Strictly $0.00 / month
+
+Creavora is engineered to operate indefinitely within the **Always Free** tiers of cloud providers:
+
+| Component | Provider & Free Allowance | Our Usage | Cost |
+| :--- | :--- | :--- | :---: |
+| **AI Synthesis** | Google Gemini (AI Studio Free Tier) | 2–3 requests / day | **$0.00** |
+| **Automation Runner** | GitHub Actions (2,000 min/mo free) | ~1.5 min / day | **$0.00** |
+| **Edge Web Hosting** | Vercel Serverless (Hobby Free) | Static + Edge Functions | **$0.00** |
+| **Email Infrastructure** | Resend Free (3,000 emails/mo) | Daily verified dispatch | **$0.00** |
+| **Community Broadcast** | Telegram Bot API | Instant & unlimited | **$0.00** |
+| **Search Syndication** | IndexNow Protocol (Bing, Yandex) | Real-time push | **$0.00** |
+
+---
+
+## 🛠️ Local Development & Diagnostics
 
 ### 1. Prerequisites
 - Python 3.12+
-- A free **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/)
-- A free **Resend Account** from [resend.com](https://resend.com/) *(Bisa kirim email langsung tanpa geoblock)*
+- `uv` package manager (recommended) or `pip`
 
-### 2. Clone / Open Project
+### 2. Setup
 ```bash
+git clone https://github.com/mhsbarsai/autodigest.git
 cd autodigest
-```
-
-### 3. Create Virtual Environment & Install Dependencies
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-### 4. Configure Environment Variables
-Copy `.env.example` to `.env`:
-```powershell
 cp .env.example .env
 ```
-Open `.env` and fill in your keys:
-```ini
-GEMINI_API_KEY=AIzaSy...
-DISTRIBUTION_PROVIDER=resend
-RESEND_API_KEY=re_xxxxxxxxxxxx
-RESEND_FROM_EMAIL=AutoDigest <onboarding@resend.dev>
-RESEND_TO_EMAIL=your_email@gmail.com
-NEWSLETTER_NAME=AutoDigest
-```
-*(How to get Resend API Key: Resend Dashboard → API Keys → Create API Key).*
 
-### 5. Run a Local Test (Dry-Run Mode)
-```powershell
-python scripts/test_local.py --dry-run
-```
-- Fetches real live RSS news.
-- Calls Gemini AI to curate and summarize.
-- Generates the email HTML inside `output/latest_preview.html`.
-- Automatically opens the rendered newsletter in your default browser.
-- **Does NOT send any emails or touch your Beehiiv live list.**
-
----
-
-## ☁️ Cloud Deployment (Autopilot 24/7)
-
-When you're ready to let the AI run on autopilot without needing your computer on:
-
-### Option A: Windows PowerShell
-```powershell
-.\scripts\setup_gcp.ps1 -ProjectId "your-gcp-project-id"
-.\scripts\deploy.ps1 -ProjectId "your-gcp-project-id"
-```
-
-### Option B: Linux / macOS / Cloud Shell
+### 3. Run Test Suite
 ```bash
-chmod +x scripts/*.sh
-./scripts/setup_gcp.sh "your-gcp-project-id"
-./scripts/deploy.sh us-central1 "your-gcp-project-id"
+uv run pytest
 ```
 
-Once deployed, **Google Cloud Scheduler** will automatically invoke the function every day at **6:00 AM EST**, assemble the issue, and schedule it on Beehiiv for **7:00 AM EST delivery**.
-
----
-
-## 📁 Project Architecture
-
+### 4. Test Multi-Channel Social & Telegram Dispatch
+```bash
+uv run python scripts/test_social.py --telegram
 ```
-autodigest/
-├── README.md                      # Complete guide & documentation
-├── requirements.txt               # Dependencies
-├── .env.example                   # Environment configuration template
-│
-├── src/
-│   ├── config.py                  # App configuration & dataclasses
-│   ├── main.py                    # Pipeline orchestrator & Cloud Function entrypoint
-│   │
-│   ├── ai/                        # AI Processing Layer
-│   │   ├── gemini_client.py       # Google GenAI SDK client with retries
-│   │   ├── content_scorer.py      # Relevance & newsworthiness scoring
-│   │   ├── summarizer.py          # Digest synthesis & structured output
-│   │   ├── subject_generator.py   # High-CTR subject line generation
-│   │   └── prompts.py             # Editorial system prompts
-│   │
-│   ├── ingestion/                 # Content Ingestion Layer
-│   │   ├── feed_registry.py       # 15+ curated RSS feed sources
-│   │   ├── rss_fetcher.py         # Multi-feed RSS parser
-│   │   ├── article_extractor.py   # Trafilatura full-text article extractor
-│   │   └── deduplicator.py        # Cryptographic content deduplication
-│   │
-│   ├── assembly/                  # Newsletter Assembly Layer
-│   │   ├── template_engine.py     # Jinja2 mobile-first HTML email builder
-│   │   ├── affiliate_injector.py  # Safe regex affiliate link insertion
-│   │   └── sponsor_slot.py        # Dedicated ad slot placeholder
-│   │
-│   ├── distribution/              # Distribution Layer
-│   │   └── beehiiv_client.py      # Beehiiv REST API v2 client
-│   │
-│   ├── storage/                   # Storage Layer
-│   │   └── gcs_cache.py           # GCS / Local seen-articles cache
-│   │
-│   └── models/                    # Pydantic Schemas
-│       └── schemas.py             # Shared data contracts
-│
-├── templates/
-│   └── newsletter.html.j2         # Responsive HTML email template
-│
-├── scripts/
-│   ├── test_local.py              # Local runner with browser preview
-│   ├── verify_pipeline.py         # Automated self-test suite
-│   ├── deploy.ps1 / deploy.sh     # Cloud Function deployment
-│   └── setup_gcp.ps1 / .sh        # GCP resource provisioning
-│
-└── tests/
-    └── test_pipeline.py           # Pytest unit test suite
+
+### 5. Run Full Dry-Run Pipeline
+```bash
+uv run python -m src.main
 ```
 
 ---
 
-## 📈 Monetization Roadmap
+## 🤝 Sponsorship & Partnerships
 
-Once AutoDigest starts collecting subscribers:
-
-1. **0 – 1,000 Subscribers:**
-   - Focus on consistent delivery and list building.
-   - Earn affiliate commissions from AI tools mentioned in the newsletter (ChatGPT, Claude, Cursor, Notion AI).
-2. **1,000 – 2,500 Subscribers:**
-   - Activate **Beehiiv Boosts** (earn $1 – $3 for every reader that subscribes to recommended partner newsletters).
-3. **2,500 – 5,000 Subscribers:**
-   - Turn on the **Beehiiv Ad Network** (programmatic sponsorships paying $30 – $60 CPM).
-   - Expected revenue: **$300 – $800 / month**.
-4. **5,000 – 10,000+ Subscribers:**
-   - Direct brand sponsorships ($200 – $500 per email slot).
-   - Expected revenue: **$1,500 – $4,000+ / month**.
+Reach software engineers, ML researchers, and technical founders every morning:
+- **Web:** [creavora.my.id/#sponsor](https://creavora.my.id/#sponsor)
+- **Inquiries:** `mahsabar98@gmail.com`
 
 ---
 
-## 🛡️ License & Ethics
-- Only fair-use article summaries and quotes are published.
-- Original sources and author publications are always credited with direct back-links.
-- Built-in one-click unsubscribe links comply with CAN-SPAM and GDPR regulations.
+## 📄 License
+
+MIT License © 2026 Creavora Engineering Press. Built for the developer and AI research community.

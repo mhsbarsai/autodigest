@@ -133,11 +133,76 @@ def publish_web_briefing(
     # Keep up to 60 editions in archive
     updated_archive = updated_archive[:60]
 
+    # 3. Update RSS Feed (docs/feed.xml) and Sitemap (docs/sitemap.xml)
     try:
-        with open(archive_file, "w", encoding="utf-8") as f:
-            json.dump(updated_archive, f, indent=2, ensure_ascii=False)
-        logger.info(f"Updated web archive at {archive_file.resolve()} ({len(updated_archive)} editions)")
+        _update_rss_feed(docs_dir, updated_archive)
+        _update_sitemap(docs_dir)
     except Exception as e:
-        logger.error(f"Failed to update web archive: {e}")
+        logger.warning(f"Non-fatal error updating RSS/Sitemap: {e}")
 
     return briefing_payload
+
+
+def _update_rss_feed(docs_dir: Path, editions: list[dict[str, Any]]) -> None:
+    """Generate RSS 2.0 feed from latest editions."""
+    base_url = "https://creavora.my.id"
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    pub_date = now_utc.strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+    items_xml = []
+    for ed in editions[:20]:
+        issue_num = ed.get("issueNum", "1")
+        title = ed.get("title", f"Issue #{issue_num}")
+        summary = ed.get("summary", "")
+        item_link = f"{base_url}/#issue-{issue_num}"
+        items_xml.append(f"""    <item>
+      <title><![CDATA[Issue #{issue_num}: {title}]]></title>
+      <link>{item_link}</link>
+      <guid isPermaLink="false">creavora-issue-{issue_num}</guid>
+      <pubDate>{pub_date}</pubDate>
+      <description><![CDATA[{summary}]]></description>
+      <category>Artificial Intelligence</category>
+    </item>""")
+
+    feed_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creavora — Daily Technical AI Intelligence</title>
+    <link>{base_url}/</link>
+    <description>Autonomous 3-minute morning briefing filtering arXiv preprints, frontier model architectures, GPU kernels, and developer tools. 100% Free.</description>
+    <language>en-us</language>
+    <pubDate>{pub_date}</pubDate>
+    <lastBuildDate>{pub_date}</lastBuildDate>
+    <atom:link href="{base_url}/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>{base_url}/og-image.png</url>
+      <title>Creavora</title>
+      <link>{base_url}/</link>
+    </image>
+{chr(10).join(items_xml)}
+  </channel>
+</rss>
+"""
+    feed_file = docs_dir / "feed.xml"
+    with open(feed_file, "w", encoding="utf-8") as f:
+        f.write(feed_xml.strip() + "\n")
+    logger.info(f"Updated live RSS 2.0 feed at {feed_file.resolve()}")
+
+
+def _update_sitemap(docs_dir: Path) -> None:
+    """Generate search engine sitemap.xml."""
+    now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+    sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://creavora.my.id/</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+"""
+    sitemap_file = docs_dir / "sitemap.xml"
+    with open(sitemap_file, "w", encoding="utf-8") as f:
+        f.write(sitemap_xml.strip() + "\n")
+    logger.info(f"Updated sitemap at {sitemap_file.resolve()}")
