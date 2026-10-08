@@ -53,10 +53,10 @@ jobs:
             output/today_social_teasers.md
           retention-days: 14
 
-      - name: Commit Seen Articles Cache
+      - name: Commit Seen Articles Cache & Web Archive
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/seen_articles.json
-          git commit -m "chore(cache): update seen articles cache [skip ci]" || echo "No cache changes to commit"
+          git add data/seen_articles.json docs/data/
+          git commit -m "chore(cache): update seen articles cache and web archive [skip ci]" || echo "No changes to commit"
           git push

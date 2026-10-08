@@ -1,0 +1,35 @@
+[
+  {
+    "issueNum": "143",
+    "date": "Oct 08, 2026",
+    "readTime": "3 min read",
+    "category": "AGENT RUNTIMES & INFERENCE",
+    "title": "DeepSeek-V3 MoE & FlashAttention-3 Kernel Optimizations in Production",
+    "summary": "DeepSeek-V3 eliminates auxiliary loss in Mixture-of-Experts routing while FlashAttention-3 unlocks 740 TFLOPS FP8 GEMM throughput on Hopper hardware.",
+    "takeaway": "EMA dynamic bias adjustment eliminates routing conflicts, recovering 1.4% downstream reasoning accuracy.",
+    "arxivId": "arXiv:2412.19437",
+    "arxivUrl": "https://arxiv.org/abs/2412.19437"
+  },
+  {
+    "issueNum": "142",
+    "date": "Oct 07, 2026",
+    "readTime": "3 min read",
+    "category": "MODEL ARCHITECTURE",
+    "title": "Auxiliary-Loss-Free Balancing in Mixture-of-Experts",
+    "summary": "DeepSeek-V3 introduces dynamic bias adjustment to prevent expert collapse without gradient contamination.",
+    "takeaway": "Preserves core reasoning gradients without auxiliary loss penalties.",
+    "arxivId": "arXiv:2412.19437",
+    "arxivUrl": "https://arxiv.org/abs/2412.19437"
+  },
+  {
+    "issueNum": "141",
+    "date": "Oct 06, 2026",
+    "readTime": "3 min read",
+    "category": "AGENT RUNTIMES",
+    "title": "Context-Free Grammar Enforcement at Token Level in vLLM",
+    "summary": "Pushdown automaton state tracking restricts logits masks during decoding, guaranteeing RFC 8259 compliance.",
+    "takeaway": "Zero schema retries in autonomous agent structured tool-calling loops.",
+    "arxivId": "arXiv:2409.11244",
+    "arxivUrl": "https://arxiv.org/abs/2409.11244"
+  }
+]

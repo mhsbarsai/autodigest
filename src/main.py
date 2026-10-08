@@ -133,6 +133,13 @@ def run_pipeline(dry_run: bool = False, immediate: bool = False, use_local_cache
         except Exception as e:
             logger.warning(f"Social distribution encounter an error but non-fatal: {e}")
 
+        # Publish structured briefing to web archive (docs/data/ for creavora.my.id)
+        try:
+            from src.distribution.web_publisher import publish_web_briefing
+            publish_web_briefing(digest)
+        except Exception as e:
+            logger.warning(f"Web archive publishing non-fatal error: {e}")
+
         # 8. Distribution / Output
         if not dry_run:
             now_utc = datetime.datetime.now(datetime.timezone.utc)

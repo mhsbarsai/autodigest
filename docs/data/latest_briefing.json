@@ -1,0 +1,48 @@
+{
+  "issueNum": "143",
+  "date": "Oct 08, 2026",
+  "timeWib": "06:00 WIB",
+  "readTime": "3 min read",
+  "category": "AGENT RUNTIMES & INFERENCE",
+  "title": "DeepSeek-V3 MoE & FlashAttention-3 Kernel Optimizations in Production",
+  "summary": "DeepSeek-V3 eliminates auxiliary loss in Mixture-of-Experts routing while FlashAttention-3 unlocks 740 TFLOPS FP8 GEMM throughput on Hopper hardware.",
+  "whyItMatters": [
+    {
+      "bold": "Auxiliary-Loss-Free Balancing:",
+      "text": "EMA dynamic bias adjustment eliminates routing conflicts, recovering 1.4% downstream reasoning accuracy previously lost to penalty gradients."
+    },
+    {
+      "bold": "Hopper WGMMA & TMA Acceleration:",
+      "text": "Overlaps global memory copies with tensor core execution in hardware, cutting latency by 47% across 128k context windows."
+    },
+    {
+      "bold": "Multi-Token Speculative Heads:",
+      "text": "Dual speculative prediction heads generate t+1 and t+2 tokens concurrently with minimal VRAM overhead."
+    }
+  ],
+  "codeSnippet": "# DeepSeek-V3 EMA Bias Router\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\n\nclass AuxLossFreeRouter(nn.Module):\n    def __init__(self, d_model=4096, n_experts=64, top_k=8, gamma=0.001):\n        super().__init__()\n        self.gate = nn.Linear(d_model, n_experts, bias=False)\n        self.top_k = top_k\n        self.gamma = gamma\n        self.register_buffer('expert_bias', torch.zeros(n_experts))\n\n    def forward(self, x):\n        logits = self.gate(x)\n        routing_scores = logits + self.expert_bias\n        topk_scores, topk_indices = torch.topk(routing_scores, self.top_k, dim=-1)\n        weights = F.softmax(logits.gather(-1, topk_indices), dim=-1)\n        return weights, topk_indices",
+  "links": [
+    {
+      "label": "arXiv:2412.19437 (DeepSeek-V3)",
+      "url": "https://arxiv.org/abs/2412.19437"
+    },
+    {
+      "label": "vLLM Production Implementation",
+      "url": "https://github.com/vllm-project/vllm"
+    }
+  ],
+  "subject_line": "DeepSeek-V3 MoE & FlashAttention-3 Kernel Optimizations",
+  "articles": [
+    {
+      "headline": "DeepSeek-V3 MoE: Auxiliary-Loss-Free Balancing",
+      "emoji": "⚡",
+      "source_name": "arXiv AI",
+      "source_url": "https://arxiv.org/abs/2412.19437",
+      "summary": "Novel dynamic bias load balancer prevents expert collapse without gradient contamination.",
+      "key_takeaways": [
+        "Eliminates auxiliary loss weighting",
+        "Preserves core language modeling gradients"
+      ]
+    }
+  ]
+}
