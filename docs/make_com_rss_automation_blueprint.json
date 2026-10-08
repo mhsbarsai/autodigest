@@ -1,0 +1,36 @@
+{
+  "name": "Creavora — Auto RSS to Social Broadcast",
+  "description": "Watches https://creavora.my.id/feed.xml and automatically broadcasts new morning editions to social channels.",
+  "version": 1,
+  "flow": [
+    {
+      "id": 1,
+      "module": "rss:watchFeed",
+      "version": 1,
+      "parameters": {
+        "url": "https://creavora.my.id/feed.xml",
+        "max": 1
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "twitter:createTweet",
+      "version": 1,
+      "parameters": {
+        "text": "⚡ Creavora Morning Briefing: {{1.title}}\n\n{{1.description}}\n\n👉 Read 3-min brief: {{1.url}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    }
+  ]
+}

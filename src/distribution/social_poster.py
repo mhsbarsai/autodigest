@@ -292,7 +292,17 @@ def distribute_social(
         tw_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "").strip()
         if tw_key and tw_secret and tw_token and tw_token_secret:
             dispatch_twitter(tw_key, tw_secret, tw_token, tw_token_secret, teasers["x_thread"])
+
+        # 6. Automatic push to Bluesky Thread (100% Free & Open AI Community)
+        bsky_handle = os.getenv("BLUESKY_HANDLE", "").strip()
+        bsky_pw = os.getenv("BLUESKY_APP_PASSWORD", "").strip()
+        if bsky_handle and bsky_pw:
+            try:
+                from src.distribution.bluesky_poster import dispatch_bluesky_thread
+                dispatch_bluesky_thread(bsky_handle, bsky_pw, teasers["x_thread"])
+            except Exception as e:
+                logger.warning(f"Failed to post to Bluesky: {e}")
     else:
-        logger.info("Dry-run mode: skipped Discord/Telegram/Twitter broadcast.")
+        logger.info("Dry-run mode: skipped Discord/Telegram/Twitter/Bluesky broadcast.")
 
     return teasers

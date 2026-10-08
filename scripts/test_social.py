@@ -143,22 +143,57 @@ def verify_twitter() -> bool:
         return False
 
 
+def verify_bluesky() -> bool:
+    handle = os.getenv("BLUESKY_HANDLE", "").strip()
+    password = os.getenv("BLUESKY_APP_PASSWORD", "").strip()
+
+    print("\n" + "=" * 50)
+    print("🦋 BLUESKY AT PROTOCOL TEST")
+    print("=" * 50)
+
+    if not handle or not password:
+        print("❌ SKIPPED: BLUESKY_HANDLE or BLUESKY_APP_PASSWORD is missing.")
+        print("   Cara konfigurasi:")
+        print("   1. Buat akun di https://bsky.app (misal: creavora.bsky.social).")
+        print("   2. Masuk ke Settings -> Privacy & Security -> App Passwords -> Add App Password.")
+        print("   3. Isi BLUESKY_HANDLE dan BLUESKY_APP_PASSWORD di .env")
+        return False
+
+    test_posts = [
+        "🚨 Testing Creavora Automated Dispatch Engine on Bluesky! ⚡\n\nDaily 3-minute technical AI intelligence dispatched every morning at 06:00 WIB.\n\n👉 https://creavora.my.id",
+        "🧵 Built for AI engineers, ML researchers, and builders.\n\nStrictly zero marketing PR hype, 100% hard engineering signal."
+    ]
+
+    print(f"Mengirim thread uji coba ke Bluesky (@{handle}) via AT Protocol...")
+    from src.distribution.bluesky_poster import dispatch_bluesky_thread
+    posts = dispatch_bluesky_thread(handle, password, test_posts)
+    if posts:
+        print(f"✅ SUKSES! {len(posts)} post thread berhasil dipublikasikan di Bluesky!")
+        return True
+    else:
+        print("❌ GAGAL: Periksa kembali handle dan App Password Bluesky.")
+        return False
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Test Creavora Social Media Automation")
     parser.add_argument("--telegram", action="store_true", help="Test Telegram Channel")
     parser.add_argument("--discord", action="store_true", help="Test Discord Webhook")
     parser.add_argument("--twitter", action="store_true", help="Test X / Twitter")
+    parser.add_argument("--bluesky", action="store_true", help="Test Bluesky AT Protocol")
     parser.add_argument("--all", action="store_true", help="Test all configured channels")
 
     args = parser.parse_args()
 
-    run_all = args.all or (not args.telegram and not args.discord and not args.twitter)
+    run_all = args.all or (not args.telegram and not args.discord and not args.twitter and not args.bluesky)
 
     results = {}
     if run_all or args.telegram:
         results["Telegram"] = verify_telegram()
     if run_all or args.discord:
         results["Discord"] = verify_discord()
+    if run_all or args.bluesky:
+        results["Bluesky"] = verify_bluesky()
     if run_all or args.twitter:
         results["Twitter"] = verify_twitter()
 

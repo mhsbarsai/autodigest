@@ -35,6 +35,8 @@ def main() -> None:
     tg_token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     tg_chat = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     twitter_key = os.getenv("TWITTER_API_KEY", "").strip()
+    bsky_handle = os.getenv("BLUESKY_HANDLE", "").strip()
+    bsky_pw = os.getenv("BLUESKY_APP_PASSWORD", "").strip()
 
     logger.info("PRE-FLIGHT SECRETS CHECK:")
     logger.info(f"  • GEMINI_API_KEY  : {'[OK] (Configured, ' + str(len(gemini_key)) + ' chars)' if gemini_key else '[CRITICAL: MISSING OR EMPTY]'}")
@@ -42,6 +44,7 @@ def main() -> None:
     logger.info(f"  • RESEND_TO_EMAIL : {'[OK] (' + to_email + ')' if to_email else '[NOT SET - will fallback to mahsabar98@gmail.com]'}")
     logger.info(f"  • TELEGRAM        : {'[ENABLED] (Channel/Chat: ' + tg_chat + ')' if (tg_token and tg_chat) else '[DISABLED / NOT CONFIGURED]'}")
     logger.info(f"  • DISCORD         : {'[ENABLED] (Webhook active)' if discord_url else '[DISABLED / NOT CONFIGURED]'}")
+    logger.info(f"  • BLUESKY         : {'[ENABLED] (@' + bsky_handle + ')' if (bsky_handle and bsky_pw) else '[DISABLED / NOT CONFIGURED]'}")
     logger.info(f"  • X / TWITTER     : {'[ENABLED] (API configured)' if twitter_key else '[DISABLED / NOT CONFIGURED]'}")
     logger.info("=" * 60)
 
