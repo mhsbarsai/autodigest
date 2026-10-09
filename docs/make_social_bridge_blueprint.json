@@ -1,0 +1,71 @@
+{
+  "name": "Creavora — Multi-Channel Social Webhook Bridge (X & LinkedIn)",
+  "description": "Receives Creavora daily intelligence payload via Webhook and automatically publishes to X/Twitter and LinkedIn for $0/month without paid developer APIs.",
+  "version": 1,
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "Creavora Webhook"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "twitter:createTweet",
+      "version": 1,
+      "parameters": {
+        "text": "{{1.x_thread[1]}}\n\nRead full brief: {{1.landing_url}}"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": -120
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "linkedin:createAPost",
+      "version": 1,
+      "parameters": {
+        "text": "{{1.linkedin_post}}",
+        "visibility": "PUBLIC"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 120
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "freshVariables": false
+    }
+  }
+}
