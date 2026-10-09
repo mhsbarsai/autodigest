@@ -22,6 +22,7 @@ data/*
 !data/sponsor.json.example
 !data/sponsor.json
 !data/subscribers.json
+!data/social_history.json
 output/
 
 # Editor & OS files

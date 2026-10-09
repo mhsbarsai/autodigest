@@ -46,6 +46,7 @@ jobs:
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          SOCIAL_WEBHOOK_URL: ${{ secrets.SOCIAL_WEBHOOK_URL }}
         run: |
           python scripts/run_daily.py
 
@@ -57,12 +58,14 @@ jobs:
           path: |
             output/latest_preview.html
             output/today_social_teasers.md
+            output/today_social_card.png
+            data/social_history.json
           retention-days: 14
 
       - name: Commit Seen Articles Cache & Web Archive
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/seen_articles.json docs/
-          git commit -m "chore(cache): update seen articles cache, web archive and RSS feed [skip ci]" || echo "No changes to commit"
+          git add data/seen_articles.json data/social_history.json docs/
+          git commit -m "chore(cache): update seen articles cache, social history, web archive and card banner [skip ci]" || echo "No changes to commit"
           git push

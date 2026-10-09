@@ -22,7 +22,7 @@ from src.assembly.template_engine import render_newsletter
 from src.config import load_config
 from src.distribution.beehiiv_client import BeehiivClient
 from src.distribution.resend_client import ResendClient
-from src.distribution.social_poster import distribute_social
+from src.distribution.social_manager import run_autonomous_social_manager
 from src.ingestion.article_extractor import enrich_articles
 from src.ingestion.deduplicator import deduplicate, get_updated_seen_hashes
 from src.ingestion.rss_fetcher import fetch_all_feeds
@@ -127,11 +127,11 @@ def run_pipeline(dry_run: bool = False, immediate: bool = False, use_local_cache
             f.write(html_content)
         logger.info(f"Saved preview HTML to {preview_file.resolve()}")
 
-        # Generate social copy & teasers (and distribute to Discord/Telegram if active)
+        # Autonomous End-to-End Social Media Manager (Cards, Multi-Platform, Webhooks, History)
         try:
-            distribute_social(digest, dry_run=dry_run)
+            run_autonomous_social_manager(digest, dry_run=dry_run)
         except Exception as e:
-            logger.warning(f"Social distribution encounter an error but non-fatal: {e}")
+            logger.warning(f"Autonomous social manager encountered an error but non-fatal: {e}")
 
         # Publish structured briefing to web archive (docs/data/ for creavora.my.id)
         try:

@@ -59,9 +59,12 @@ Every morning at **23:00 UTC (06:00 AM WIB)**, GitHub Actions triggers the auton
 │ 4. MULTI-CHANNEL AUTONOMOUS BROADCAST                  │
 │    ├─► Email Blast: Resend API (DKIM/DMARC verified)   │
 │    ├─► Web Publication: Vercel Edge (creavora.my.id)   │
-│    ├─► Telegram Channel: Instant push to @CreavoraAI   │
+│    ├─► Dynamic Social Card: 1200x630 dark banner (PIL) │
+│    ├─► Telegram Channel: Photo + pinned post @Creavora │
+│    ├─► Bluesky Network: 4-part AT Protocol thread      │
+│    ├─► Webhook Bridge: Make.com/n8n (X & LinkedIn)     │
 │    ├─► RSS 2.0 Feed: Auto-updates docs/feed.xml        │
-│    └─► Social Copy: X thread & LinkedIn in artifacts   │
+│    └─► Social Memory: Persistent social_history.json   │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -78,6 +81,8 @@ Creavora is engineered to operate indefinitely within the **Always Free** tiers 
 | **Edge Web Hosting** | Vercel Serverless (Hobby Free) | Static + Edge Functions | **$0.00** |
 | **Email Infrastructure** | Resend Free (3,000 emails/mo) | Daily verified dispatch | **$0.00** |
 | **Community Broadcast** | Telegram Bot API | Instant & unlimited | **$0.00** |
+| **Decentralized Social** | Bluesky AT Protocol | Direct API & Threads | **$0.00** |
+| **Social Webhook Bridge**| Make.com / n8n Free Tier | X, LinkedIn, Threads sync | **$0.00** |
 | **Search Syndication** | IndexNow Protocol (Bing, Yandex) | Real-time push | **$0.00** |
 
 ---

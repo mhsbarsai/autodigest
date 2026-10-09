@@ -22,6 +22,9 @@ requests-oauthlib>=2.0.0       # OAuth 1.0a for automated X / Twitter API v2 thr
 # === Storage ===
 google-cloud-storage>=2.14.0   # GCS for article cache
 
+# === Visuals & Social Cards ===
+Pillow>=10.0.0                 # Dynamic 1200x630 social media card banner generation
+
 # === Utilities ===
 python-dotenv>=1.0.0           # Load .env files for local development
 tenacity>=8.2.0                # Retry with exponential backoff

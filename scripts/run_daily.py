@@ -37,6 +37,7 @@ def main() -> None:
     twitter_key = os.getenv("TWITTER_API_KEY", "").strip()
     bsky_handle = os.getenv("BLUESKY_HANDLE", "").strip()
     bsky_pw = os.getenv("BLUESKY_APP_PASSWORD", "").strip()
+    social_webhook = os.getenv("SOCIAL_WEBHOOK_URL") or os.getenv("MAKE_WEBHOOK_URL", "").strip()
 
     logger.info("PRE-FLIGHT SECRETS CHECK:")
     logger.info(f"  • GEMINI_API_KEY  : {'[OK] (Configured, ' + str(len(gemini_key)) + ' chars)' if gemini_key else '[CRITICAL: MISSING OR EMPTY]'}")
@@ -46,6 +47,7 @@ def main() -> None:
     logger.info(f"  • DISCORD         : {'[ENABLED] (Webhook active)' if discord_url else '[DISABLED / NOT CONFIGURED]'}")
     logger.info(f"  • BLUESKY         : {'[ENABLED] (@' + bsky_handle + ')' if (bsky_handle and bsky_pw) else '[DISABLED / NOT CONFIGURED]'}")
     logger.info(f"  • X / TWITTER     : {'[ENABLED] (API configured)' if twitter_key else '[DISABLED / NOT CONFIGURED]'}")
+    logger.info(f"  • WEBHOOK BRIDGE  : {'[ENABLED] (Make/n8n active)' if social_webhook else '[DISABLED / OPTIONAL]'}")
     logger.info("=" * 60)
 
     if not gemini_key:

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-10-09T01:01:48.028519+00:00",
+    "subject_line": "DeepSeek V3 Released: 671B Weights Open",
+    "articles": [
+      "DeepSeek V3 Open Weights"
+    ],
+    "tool_of_the_day": "vLLM Serving Engine",
+    "dispatched_channels": [
+      "telegram",
+      "bluesky",
+      "discord"
+    ],
+    "card_image": "docs/today_social_card.png"
+  }
+]
