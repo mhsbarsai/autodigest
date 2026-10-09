@@ -12,5 +12,20 @@
       "discord"
     ],
     "card_image": "docs/today_social_card.png"
+  },
+  {
+    "timestamp": "2026-10-09T02:48:28.165907+00:00",
+    "subject_line": "OpenAI sets ARR at $50B; JetBrains drops Mellum2.1 🛠️",
+    "articles": [
+      "OpenAI Clarifies Annualized Revenue at $50 Billion, Pushing IPO to 2027",
+      "JetBrains Releases Mellum2.1: A 12B MoE Open Model Optimized for Local Coding Agents",
+      "AI Evaluation Platform Arena Nears $3.1B Valuation Following Series B Round",
+      "Goodfire Launches 'Inside-Out' Activation Monitors to Detect Rogue AI Agents Economically"
+    ],
+    "tool_of_the_day": "vLLM: High-Throughput and Memory-Efficient LLM Serving Engine",
+    "dispatched_channels": [
+      "telegram"
+    ],
+    "card_image": "output/today_social_card.png"
   }
 ]

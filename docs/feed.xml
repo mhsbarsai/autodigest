@@ -5,8 +5,8 @@
     <link>https://creavora.my.id/</link>
     <description>Autonomous 3-minute morning briefing filtering arXiv preprints, frontier model architectures, GPU kernels, and developer tools. 100% Free.</description>
     <language>en-us</language>
-    <pubDate>Thu, 08 Oct 2026 12:45:55 +0000</pubDate>
-    <lastBuildDate>Thu, 08 Oct 2026 12:45:55 +0000</lastBuildDate>
+    <pubDate>Fri, 09 Oct 2026 02:48:28 +0000</pubDate>
+    <lastBuildDate>Fri, 09 Oct 2026 02:48:28 +0000</lastBuildDate>
     <atom:link href="https://creavora.my.id/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://creavora.my.id/og-image.png</url>
@@ -14,10 +14,18 @@
       <link>https://creavora.my.id/</link>
     </image>
     <item>
+      <title><![CDATA[Issue #145: OpenAI Clarifies Annualized Revenue at $50 Billion, Pushing IPO to 2027]]></title>
+      <link>https://creavora.my.id/#issue-145</link>
+      <guid isPermaLink="false">creavora-issue-145</guid>
+      <pubDate>Fri, 09 Oct 2026 02:48:28 +0000</pubDate>
+      <description><![CDATA[OpenAI has informed investors that its true annualized revenue run rate is $50 billion—some $20 billion lower than previous figures circulated by investors attempting to match Anthropic's reporting methodology. The discrepancy stems from differing accounting treatments of partner cloud sales, while macroeconomic pressure and safety concerns have delayed OpenAI's anticipated IPO to early 2027.]]></description>
+      <category>Artificial Intelligence</category>
+    </item>
+    <item>
       <title><![CDATA[Issue #144: Humanize Orchestrates Multi-Agent Coding via Deterministic Gates and Cross-Vendor Review]]></title>
       <link>https://creavora.my.id/#issue-144</link>
       <guid isPermaLink="false">creavora-issue-144</guid>
-      <pubDate>Thu, 08 Oct 2026 12:45:55 +0000</pubDate>
+      <pubDate>Fri, 09 Oct 2026 02:48:28 +0000</pubDate>
       <description><![CDATA[Humanize is a multi-agent orchestration workflow that replaces probabilistic model routing with 72 deterministic hooks to enforce mechanical boundaries between planning, implementation, and review. By alternating builder and reviewer samples across different model vendors, defects only survive if both models fail to catch them.]]></description>
       <category>Artificial Intelligence</category>
     </item>
@@ -25,7 +33,7 @@
       <title><![CDATA[Issue #142: Auxiliary-Loss-Free Balancing in Mixture-of-Experts]]></title>
       <link>https://creavora.my.id/#issue-142</link>
       <guid isPermaLink="false">creavora-issue-142</guid>
-      <pubDate>Thu, 08 Oct 2026 12:45:55 +0000</pubDate>
+      <pubDate>Fri, 09 Oct 2026 02:48:28 +0000</pubDate>
       <description><![CDATA[DeepSeek-V3 introduces dynamic bias adjustment to prevent expert collapse without gradient contamination.]]></description>
       <category>Artificial Intelligence</category>
     </item>
@@ -33,7 +41,7 @@
       <title><![CDATA[Issue #141: Context-Free Grammar Enforcement at Token Level in vLLM]]></title>
       <link>https://creavora.my.id/#issue-141</link>
       <guid isPermaLink="false">creavora-issue-141</guid>
-      <pubDate>Thu, 08 Oct 2026 12:45:55 +0000</pubDate>
+      <pubDate>Fri, 09 Oct 2026 02:48:28 +0000</pubDate>
       <description><![CDATA[Pushdown automaton state tracking restricts logits masks during decoding, guaranteeing RFC 8259 compliance.]]></description>
       <category>Artificial Intelligence</category>
     </item>

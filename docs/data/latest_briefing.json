@@ -1,90 +1,90 @@
 {
-  "issueNum": "144",
-  "date": "Oct 08, 2026",
+  "issueNum": "145",
+  "date": "Oct 09, 2026",
   "timeWib": "06:00 WIB",
   "readTime": "3 min read",
   "category": "FRONTIER INTELLIGENCE",
-  "title": "Humanize Orchestrates Multi-Agent Coding via Deterministic Gates and Cross-Vendor Review",
-  "summary": "Humanize is a multi-agent orchestration workflow that replaces probabilistic model routing with 72 deterministic hooks to enforce mechanical boundaries between planning, implementation, and review. By alternating builder and reviewer samples across different model vendors, defects only survive if both models fail to catch them.",
+  "title": "OpenAI Clarifies Annualized Revenue at $50 Billion, Pushing IPO to 2027",
+  "summary": "OpenAI has informed investors that its true annualized revenue run rate is $50 billion—some $20 billion lower than previous figures circulated by investors attempting to match Anthropic's reporting methodology. The discrepancy stems from differing accounting treatments of partner cloud sales, while macroeconomic pressure and safety concerns have delayed OpenAI's anticipated IPO to early 2027.",
   "whyItMatters": [
     {
       "bold": "Core Signal #1:",
-      "text": "Enforces 72 deterministic gates and a phase-separated workflow where two-thirds of rounds occur after initial implementation approval."
+      "text": "Annualized revenue sits at roughly $50 billion, down from the widely circulated $70 billion figure based on external investor comparisons."
     },
     {
       "bold": "Core Signal #2:",
-      "text": "Combines multi-vendor model sampling to reduce single-model blind spots in agentic coding loops."
+      "text": "Anthropic includes gross sales from cloud partners in its metrics, whereas OpenAI excludes them, driving the reporting delta."
     },
     {
       "bold": "Core Signal #3:",
-      "text": "Demonstrated strong results across benchmarks, including top-three finishes in MLSys 2026 FlashInfer and full scores in IOI and PutnamBench."
+      "text": "The financial reality check and ongoing safety reviews have pushed OpenAI's planned IPO window out to 2027."
     }
   ],
-  "codeSnippet": "# Creavora Morning Briefing — Issue #144\n# Date: Oct 08, 2026 | Dispatched at 06:00 WIB\n# Topic: Humanize Orchestrates Multi-Agent Coding via Deterministic Gates and Cross-Vendor Review\n\n# Key Points:\n# - Enforces 72 deterministic gates and a phase-separated workflow where two-thirds of rounds occur after initial implementation approval.\n# - Combines multi-vendor model sampling to reduce single-model blind spots in agentic coding loops.\n# - Demonstrated strong results across benchmarks, including top-three finishes in MLSys 2026 FlashInfer and full scores in IOI and PutnamBench.\n\n# Source Reference:\n# https://arxiv.org/abs/2610.08900",
+  "codeSnippet": "# Creavora Morning Briefing — Issue #145\n# Date: Oct 09, 2026 | Dispatched at 06:00 WIB\n# Topic: OpenAI Clarifies Annualized Revenue at $50 Billion, Pushing IPO to 2027\n\n# Key Points:\n# - Annualized revenue sits at roughly $50 billion, down from the widely circulated $70 billion figure based on external investor comparisons.\n# - Anthropic includes gross sales from cloud partners in its metrics, whereas OpenAI excludes them, driving the reporting delta.\n# - The financial reality check and ongoing safety reviews have pushed OpenAI's planned IPO window out to 2027.\n\n# Source Reference:\n# https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/",
   "links": [
     {
-      "label": "ArXiv CS.AI: Source Article",
-      "url": "https://arxiv.org/abs/2610.08900"
+      "label": "TechCrunch AI: Source Article",
+      "url": "https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/"
     },
     {
-      "label": "Tool of the Day: AdaGuard Implements Adaptive Reasoning-Budget Allocation for LLM Guardrails",
-      "url": "https://arxiv.org/abs/2610.08923"
+      "label": "Tool of the Day: vLLM: High-Throughput and Memory-Efficient LLM Serving Engine",
+      "url": "https://github.com/vllm-project/vllm"
     }
   ],
-  "subject_line": "Humanize replaces probabilistic routing with 72 gates ⚡",
+  "subject_line": "OpenAI sets ARR at $50B; JetBrains drops Mellum2.1 🛠️",
   "articles": [
     {
-      "headline": "Humanize Orchestrates Multi-Agent Coding via Deterministic Gates and Cross-Vendor Review",
-      "emoji": "🤖",
-      "source_name": "ArXiv CS.AI",
-      "source_url": "https://arxiv.org/abs/2610.08900",
-      "summary": "Humanize is a multi-agent orchestration workflow that replaces probabilistic model routing with 72 deterministic hooks to enforce mechanical boundaries between planning, implementation, and review. By alternating builder and reviewer samples across different model vendors, defects only survive if both models fail to catch them.",
+      "headline": "OpenAI Clarifies Annualized Revenue at $50 Billion, Pushing IPO to 2027",
+      "emoji": "📉",
+      "source_name": "TechCrunch AI",
+      "source_url": "https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/",
+      "summary": "OpenAI has informed investors that its true annualized revenue run rate is $50 billion—some $20 billion lower than previous figures circulated by investors attempting to match Anthropic's reporting methodology. The discrepancy stems from differing accounting treatments of partner cloud sales, while macroeconomic pressure and safety concerns have delayed OpenAI's anticipated IPO to early 2027.",
       "key_takeaways": [
-        "Enforces 72 deterministic gates and a phase-separated workflow where two-thirds of rounds occur after initial implementation approval.",
-        "Combines multi-vendor model sampling to reduce single-model blind spots in agentic coding loops.",
-        "Demonstrated strong results across benchmarks, including top-three finishes in MLSys 2026 FlashInfer and full scores in IOI and PutnamBench."
+        "Annualized revenue sits at roughly $50 billion, down from the widely circulated $70 billion figure based on external investor comparisons.",
+        "Anthropic includes gross sales from cloud partners in its metrics, whereas OpenAI excludes them, driving the reporting delta.",
+        "The financial reality check and ongoing safety reviews have pushed OpenAI's planned IPO window out to 2027."
       ]
     },
     {
-      "headline": "NVIDIA PivotOPD Trains Multi-Turn AI Agents to Recover From Pivotal Mistakes",
-      "emoji": "⚡",
+      "headline": "JetBrains Releases Mellum2.1: A 12B MoE Open Model Optimized for Local Coding Agents",
+      "emoji": "💻",
       "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/08/nvidia-pivotopd-teaches-multi-turn-ai-agents-to-recover-from-pivotal-mistakes/",
-      "summary": "NVIDIA researchers introduced PivotOPD, an on-policy distillation method that trains multi-turn LLM agents to detect and recover from early pivotal mistakes. The training framework combines reverse KL for prevention and forward KL for recovery, adding zero overhead at inference time.",
+      "source_url": "https://www.marktechpost.com/2026/10/08/jetbrains-releases-mellum2-1-a-12b-moe-open-model-for-coding-agents/",
+      "summary": "JetBrains has open-sourced Mellum2.1, a 12B mixture-of-experts thinking model activating just 2.5B parameters per token under the Apache 2.0 license. Heavy reinforcement learning in real software environments dramatically boosted its agentic coding capabilities, yielding a high-throughput, self-hostable model that runs efficiently on local hardware.",
       "key_takeaways": [
-        "Recovers from 72.7% of replayed pivotal mistakes compared to 20.3% for standard on-policy distillation.",
-        "Adds zero inference cost while outperforming 13 baselines across ALFWorld, WebShop, and Search-based QA.",
-        "Addresses the critical blind spot in outcome-based RL where early errors cause group-relative advantages to flatline at zero."
+        "Architecture utilizes 64 total experts with 8 active per token across 28 layers, featuring a 131,072-token context window.",
+        "Extensive RL post-training inside live repositories drove SWE-bench Verified performance from 2.0 up to 47.0.",
+        "GGUF quantization options ranging from 7.0 GB to 12.9 GB make local deployment via llama.cpp, vLLM, or Ollama practical for sub-agents."
       ]
     },
     {
-      "headline": "Perplexity AI Releases pplx-embed-v2-late ColBERT Embeddings for Multimodal Search",
-      "emoji": "🔍",
-      "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/",
-      "summary": "Perplexity has launched pplx-embed-v2-late, a pair of ColBERT-style multimodal embedding models available in 0.6B edge and 9B datacenter sizes. Both models output 128-dimensional vectors per token and utilize MaxSim scoring to enable direct visual document search without OCR steps.",
+      "headline": "AI Evaluation Platform Arena Nears $3.1B Valuation Following Series B Round",
+      "emoji": "📊",
+      "source_name": "TechCrunch AI",
+      "source_url": "https://techcrunch.com/2026/10/08/popular-ai-leaderboard-arena-nearly-doubles-valuation-to-3-1b-valuation-in-10-months/",
+      "summary": "Crowdsourced AI ranking platform Arena has secured a $200 million Series B at a $3.1 billion valuation, nearly doubling its valuation in 10 months. Building on its commercial AI Evaluations product launched last year, the platform has introduced alignment leaderboards to track deceptive completion and unauthorized actions.",
       "key_takeaways": [
-        "Features a 0.6B model optimized for local edge deployment and a 9B model that scores 92.4% on MADQA.",
-        "Maintains a shared embedding space allowing lightweight 0.6B queries to efficiently search a 9B document index.",
-        "Uses 128-dim token vectors that are significantly narrower than traditional dense models while supporting text, images, and page renders."
+        "The $200 million round was led by Lightspeed Venture Partners and Khosla Ventures, pushing the company's valuation to $3.1 billion.",
+        "Arena hit $100 million in annualized run-rate revenue in June, driven by its enterprise AI Evaluations service.",
+        "New leaderboard categories track critical safety metrics including deceptive task completion and unauthorized model actions."
       ]
     },
     {
-      "headline": "Architect Launches Liquid Inference to Run Real-Time Auctions for LLM Requests",
-      "emoji": "💸",
-      "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/08/architect-launches-liquid-inference-a-real-time-auction-for-llm-inference/",
-      "summary": "Architect Financial Technologies has released Liquid Inference, an exchange-style LLM router that auctions every API request to competing providers. Buyers can set strict constraints including per-job cost caps, latency limits, and zero data retention while retaining drop-in compatibility with standard clients.",
+      "headline": "Goodfire Launches 'Inside-Out' Activation Monitors to Detect Rogue AI Agents Economically",
+      "emoji": "🛡️",
+      "source_name": "TechCrunch AI",
+      "source_url": "https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost/",
+      "summary": "Interpretability startup Goodfire has released internal activation monitors hosted on Baseten to catch rogue behavior inside open models at a fraction of traditional LLM-as-a-judge costs. By running lightweight probes over existing forward-pass neural computations, the system flags malicious hacking and reward hacking with minimal latency overhead.",
       "key_takeaways": [
-        "Runs live auctions where the lowest qualifying provider bid wins the prompt routing.",
-        "Provides drop-in compatibility for OpenAI and Anthropic clients, including coding tools like Claude Code and Cursor.",
-        "Locks maximum pricing before generation and exposes live order books and cleared transactions."
+        "Probes reuse intermediate neural activations computed during the model's standard forward pass, avoiding expensive secondary LLM calls.",
+        "Testing showed monitoring 1 million exchanges costs roughly $185 via Goodfire probes, compared to thousands of dollars for separate judge models.",
+        "Running four simultaneous probes adds less than 2% to the model's time-to-first-token latency."
       ]
     }
   ],
   "tool_of_the_day": {
-    "headline": "AdaGuard Implements Adaptive Reasoning-Budget Allocation for LLM Guardrails",
-    "source_url": "https://arxiv.org/abs/2610.08923",
-    "summary": "AdaGuard is an adaptive LLM-as-a-Judge framework that dynamically infers input complexity to balance latency and safety compliance. Trained via supervised fine-tuning and GRPO, it switches between high-speed inference and reasoning-enabled moderation at runtime."
+    "headline": "vLLM: High-Throughput and Memory-Efficient LLM Serving Engine",
+    "source_url": "https://github.com/vllm-project/vllm",
+    "summary": "vLLM is an open-source serving engine engineered for high throughput and memory efficiency, leveraging PagedAttention to eliminate memory waste in KV cache management. It provides state-of-the-art serving speeds for complex architectures, including mixture-of-experts models like JetBrains Mellum2.1."
   }
 }
