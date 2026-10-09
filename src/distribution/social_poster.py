@@ -27,60 +27,135 @@ def generate_social_teasers(
     digest: NewsletterDigest,
     landing_url: str = DEFAULT_LANDING_URL,
 ) -> dict[str, Any]:
-    """Format social copy tailored for each developer/tech platform."""
-    articles = digest.articles[:3]
+    """Format high-converting, human-sounding copy tailored for each tech platform.
 
-    # --- 1. X / Twitter 3-Part Thread ---
-    t1_hook = f"🚨 {digest.subject_line}\n\nToday's top movements in frontier AI models, agent architectures & developer tools:\n\n🧵 👇"
+    Inspired by top-tier developer content engineering frameworks:
+    - Scroll-stopping single-line hook
+    - Whitespace & rhythm optimized for mobile readability
+    - Hard engineering signal (latency, VRAM, architecture tradeoffs)
+    - Actionable takeaways over marketing hype
+    - High-conversion dual-CTA (Website + Telegram Channel)
+    """
+    articles = digest.articles[:3]
+    top_article = articles[0] if articles else None
+
+    # =========================================================================
+    # 1. X / Twitter & Bluesky 4-Part Viral Thread
+    # =========================================================================
+    t1_hook = (
+        f"🚨 {digest.subject_line}\n\n"
+        f"90% of AI announcements this week were marketing fluff.\n"
+        f"Here are the actual engineering breakthroughs you need before your first commit:\n\n"
+        f"🧵 1/4 👇"
+    )
 
     t2_bullets = []
-    for a in articles:
-        bullets = " • ".join(a.key_takeaways[:2]) if a.key_takeaways else a.summary[:100]
+    for idx, a in enumerate(articles[:2], 1):
+        bullets = " • ".join(a.key_takeaways[:2]) if a.key_takeaways else a.summary[:110]
         t2_bullets.append(f"{a.emoji} {a.headline}\n{bullets}")
 
     t2_body = "\n\n".join(t2_bullets)
+    if len(t2_body) > 280:
+        t2_body = t2_body[:275] + "..."
+    t2_body = f"2/4 Key Shifts:\n\n{t2_body}"
 
     tool_text = ""
     if digest.tool_of_the_day:
         totd = digest.tool_of_the_day
-        tool_text = f"\n\n🛠️ Tool of the Day: {totd.headline}\n{totd.summary[:120]}..."
+        tool_text = (
+            f"3/4 🛠️ Tool of the Day: {totd.headline}\n\n"
+            f"{totd.summary[:140]}...\n\n"
+            f"Repo: {totd.source_url}"
+        )
+    else:
+        tool_text = "3/4 ⚡ Architecture Signal:\n\nReview full latency & memory trade-offs across today's featured models at creavora.my.id."
 
-    t3_cta = (
-        f"Get the full 3-minute morning briefing in your inbox before 6:00 AM.\n\n"
-        f"100% Free. High signal, zero fluff:\n"
-        f"👉 {landing_url}"
+    t4_cta = (
+        f"4/4 High signal. Zero PR hype.\n\n"
+        f"Delivered daily before 06:00 WIB:\n"
+        f"👉 Free Web Briefing: {landing_url}\n"
+        f"👉 Instant Telegram: https://t.me/CreavoraAI\n\n"
+        f"Bookmark to save for later 🔖"
     )
 
-    x_thread = [t1_hook, t2_body + tool_text, t3_cta]
+    x_thread = [t1_hook, t2_body, tool_text, t4_cta]
 
-    # --- 2. LinkedIn / Reddit / Tech Forum Post ---
+    # =========================================================================
+    # 2. LinkedIn High-Engagement Storytelling Post
+    # =========================================================================
     linkedin_parts = [
-        f"🧠 {digest.subject_line}",
+        f"Most AI news on the internet is just PR noise.",
         "",
-        digest.greeting,
+        f"Here is the actual engineering signal from today's frontier models & arXiv drops:",
         "",
-        "Here are today's critical developments across frontier AI:",
+        f"⚡ {digest.subject_line}",
+        "",
+        "---",
         "",
     ]
+
     for idx, a in enumerate(articles, 1):
-        linkedin_parts.append(f"{idx}. {a.emoji} {a.headline} ({a.source_name})")
-        linkedin_parts.append(f"   {a.summary}")
+        linkedin_parts.append(f"📌 {idx}. {a.headline} ({a.source_name})")
+        linkedin_parts.append(f"{a.summary}")
         if a.key_takeaways:
             for t in a.key_takeaways[:2]:
-                linkedin_parts.append(f"   • {t}")
+                linkedin_parts.append(f"   ▸ {t}")
         linkedin_parts.append("")
 
     if digest.tool_of_the_day:
         totd = digest.tool_of_the_day
-        linkedin_parts.append(f"🛠️ Tool of the Day: {totd.headline}")
-        linkedin_parts.append(f"{totd.summary}")
-        linkedin_parts.append(f"Link: {totd.source_url}")
+        linkedin_parts.append(f"🛠️ Open-Source Tool of the Day:")
+        linkedin_parts.append(f"• {totd.headline}")
+        linkedin_parts.append(f"• {totd.summary}")
+        linkedin_parts.append(f"• Code: {totd.source_url}")
         linkedin_parts.append("")
 
-    linkedin_parts.append(f"📩 Subscribe for tomorrow's 3-minute brief: {landing_url}")
+    linkedin_parts.extend([
+        "---",
+        "",
+        "💡 The takeaway for builders:",
+        "Don't optimize for model benchmarks alone; optimize for inference throughput, memory bandwidth, and deterministic guardrails.",
+        "",
+        f"We synthesize these breakdowns every morning at 06:00 WIB into a 3-minute read.",
+        f"👉 Read today's full issue & code snippet: {landing_url}",
+        f"👉 Join our Telegram channel: https://t.me/CreavoraAI",
+        "",
+        "#ArtificialIntelligence #MachineLearning #SoftwareEngineering #OpenSource #DevOps #LLM",
+    ])
     linkedin_post = "\n".join(linkedin_parts)
 
-    # --- 3. Telegram Message (Markdown format) ---
+    # =========================================================================
+    # 3. Reddit / Tech Community Discussion Post (r/LocalLLaMA, r/MachineLearning)
+    # =========================================================================
+    reddit_parts = [
+        f"# [Daily Briefing] {digest.subject_line}",
+        "",
+        f"*Dispatched at 06:00 WIB | 3-minute technical synthesis for builders & researchers*",
+        "",
+        "## Key Architecture & Research Movements Today",
+        "",
+    ]
+    for a in articles:
+        reddit_parts.append(f"### {a.emoji} {a.headline}")
+        reddit_parts.append(f"{a.summary}\n")
+        if a.key_takeaways:
+            reddit_parts.append("**Core Technical Takeaways:**")
+            for t in a.key_takeaways:
+                reddit_parts.append(f"- {t}")
+            reddit_parts.append("")
+        reddit_parts.append(f"**Source:** [{a.source_name}]({a.source_url})\n")
+
+    if digest.tool_of_the_day:
+        totd = digest.tool_of_the_day
+        reddit_parts.append(f"## 🛠️ Tool of the Day: [{totd.headline}]({totd.source_url})")
+        reddit_parts.append(f"{totd.summary}\n")
+
+    reddit_parts.append(f"---\n*Full web archive and interactive reproduction snippets available at [{landing_url}]({landing_url}) or join our discussion on [Telegram](https://t.me/CreavoraAI).*")
+    reddit_post = "\n".join(reddit_parts)
+
+    # =========================================================================
+    # 4. Telegram Channel Message (Clean Typographic Rhythm)
+    # =========================================================================
     tg_lines = [
         f"⚡ *Creavora Daily Briefing*",
         f"*{digest.subject_line}*",
@@ -89,16 +164,19 @@ def generate_social_teasers(
     for a in articles:
         tg_lines.append(f"{a.emoji} *{a.headline}*")
         tg_lines.append(f"{a.summary}")
-        tg_lines.append(f"[Read full source]({a.source_url})\n")
+        tg_lines.append(f"👉 [Read full source]({a.source_url})\n")
 
     if digest.tool_of_the_day:
         totd = digest.tool_of_the_day
-        tg_lines.append(f"🛠️ *Tool of the Day:* [{totd.headline}]({totd.source_url})\n")
+        tg_lines.append(f"🛠️ *Tool of the Day:* [{totd.headline}]({totd.source_url})")
+        tg_lines.append(f"{totd.summary}\n")
 
-    tg_lines.append(f"👉 [Read & Subscribe Free]({landing_url})")
+    tg_lines.append(f"🌐 [Read Web Version & Archive]({landing_url})")
     telegram_message = "\n".join(tg_lines)
 
-    # --- 4. Discord Webhook Payload ---
+    # =========================================================================
+    # 5. Discord Webhook Payload
+    # =========================================================================
     discord_fields = []
     for a in articles:
         discord_fields.append({
@@ -121,10 +199,10 @@ def generate_social_teasers(
         "embeds": [
             {
                 "title": f"⚡ {digest.subject_line}",
-                "description": f"{digest.greeting}\n\n[**Read Web Version & Subscribe**]({landing_url})",
+                "description": f"{digest.greeting}\n\n[**Read Web Version & Subscribe**]({landing_url}) • [**Telegram Channel**](https://t.me/CreavoraAI)",
                 "color": 6514417,  # Indigo #6366f1
                 "fields": discord_fields,
-                "footer": {"text": "Creavora — Daily 3-minute technical AI briefing"},
+                "footer": {"text": "Creavora — Daily 3-minute technical AI intelligence"},
             }
         ],
     }
@@ -132,6 +210,7 @@ def generate_social_teasers(
     return {
         "x_thread": x_thread,
         "linkedin_post": linkedin_post,
+        "reddit_post": reddit_post,
         "telegram_message": telegram_message,
         "discord_payload": discord_payload,
     }
@@ -243,13 +322,18 @@ def distribute_social(
 
     markdown_content = f"""# Creavora — Today's Social Teasers & Teaser Copy
 
-## 🐦 X / Twitter Thread (Ready to Copy & Post)
+## 🐦 X / Twitter & Bluesky Thread (Ready to Copy & Post)
 {x_formatted}
 
 ---
 
-## 💼 LinkedIn / Reddit / Community Post
+## 💼 LinkedIn Post (High-Retention & Spacing Format)
 {teasers['linkedin_post']}
+
+---
+
+## 🤖 Reddit / Developer Community Post (r/MachineLearning, r/LocalLLaMA, HN)
+{teasers['reddit_post']}
 
 ---
 
