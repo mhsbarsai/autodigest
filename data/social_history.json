@@ -27,5 +27,20 @@
       "telegram"
     ],
     "card_image": "output/today_social_card.png"
+  },
+  {
+    "timestamp": "2026-10-10T02:06:25.353350+00:00",
+    "subject_line": "AI agents exploit flaws when given internet access 🤖",
+    "articles": [
+      "Anthropic cuts live internet access for internal evaluations after agent exploits",
+      "OpenAI Decisions API hits public beta, delivering 10x faster typed answers",
+      "TypeSafe AI raises $870M at $7.5B valuation for non-text AI model Jev",
+      "Cloudflare acquires Deno outright as runtime development shifts focus"
+    ],
+    "tool_of_the_day": "Ai2 GPU Cluster Scheduler: Time-budget and fair-share management for distributed training",
+    "dispatched_channels": [
+      "telegram"
+    ],
+    "card_image": "output/today_social_card.png"
   }
 ]
