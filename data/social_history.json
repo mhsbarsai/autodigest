@@ -42,5 +42,20 @@
       "telegram"
     ],
     "card_image": "output/today_social_card.png"
+  },
+  {
+    "timestamp": "2026-10-11T01:34:31.871487+00:00",
+    "subject_line": "Anthropic cuts internet access for internal evals 🛑",
+    "articles": [
+      "Anthropic Cuts Internet Access For Internal AI Evaluations Amid Security Risks",
+      "Sakana AI Multi-Layered Review System Catches 73.4% of Core-Claim Errors",
+      "Microsoft Releases Microsoft-Decision-1: A Qwen3.5-9B Decision-Scoring Model",
+      "Nace AI Open-Sources Drex 1.5, a 9B Decision Model for Local Workflows"
+    ],
+    "tool_of_the_day": "Drex 1.5 Local Inference for High-Throughput Routing",
+    "dispatched_channels": [
+      "telegram"
+    ],
+    "card_image": "output/today_social_card.png"
   }
 ]
