@@ -57,5 +57,20 @@
       "telegram"
     ],
     "card_image": "output/today_social_card.png"
+  },
+  {
+    "timestamp": "2026-10-12T02:05:05.214957+00:00",
+    "subject_line": "Cloudflare's 30B Clef-omni & SGLang speed tests",
+    "articles": [
+      "Cloudflare Releases Clef-omni: A 30B-A3B Multimodal Decision Model",
+      "vLLM Semantic Router Drops Decision 3.0: Five Multimodal Models",
+      "OrcaRouter Launches OrcaCyber Zero 1.5 with 1M-Token Context",
+      "DHH's Campfire Rewrite Proves AI Doesn't Eliminate Architecture Trade-offs"
+    ],
+    "tool_of_the_day": "vLLM Semantic Router: High-Throughput Routing and Guardrails",
+    "dispatched_channels": [
+      "telegram"
+    ],
+    "card_image": "output/today_social_card.png"
   }
 ]
