@@ -1,90 +1,78 @@
 {
   "issueNum": "145",
-  "date": "Oct 12, 2026",
+  "date": "Oct 13, 2026",
   "timeWib": "06:00 WIB",
   "readTime": "3 min read",
   "category": "FRONTIER INTELLIGENCE",
-  "title": "Cloudflare Releases Clef-omni: A 30B-A3B Multimodal Decision Model",
-  "summary": "Cloudflare has introduced Clef-omni, an open-weight mixture-of-experts decision model capable of scoring text, images, audio, and video in a single API call. By moving its serving stack to SGLang, Cloudflare also doubled hosted inference speeds for the Clef model family.",
+  "title": "Meta Releases Muse Wonder and Muse Wonder Full, Its First Frontier AI Models",
+  "summary": "Meta’s Superintelligence Lab launched Muse Wonder and Muse Wonder Full, marking its entry into the frontier model tier with performance matching Fable 5.1 and GPT-6 Astra. Trained at the Prometheus data center in Ohio, the models introduce Active Memory and Active Focus architectures designed for long-running agentic tasks.",
   "whyItMatters": [
     {
       "bold": "Core Signal #1:",
-      "text": "Clef-omni is a 30B total / 3B active parameter MoE built on Qwen3-Omni, priced at $0.15 per million input tokens."
+      "text": "Priced at $4 per million input tokens and $20 per million output tokens via the Meta Model API."
     },
     {
       "bold": "Core Signal #2:",
-      "text": "Accepts up to 4 images, 4 audio clips (300s each), and 2 video clips (60s each) with a 64k-token context window."
+      "text": "Muse Wonder Full is restricted to Muse Code subscribers and powers the primary Muse agent."
     },
     {
       "bold": "Core Signal #3:",
-      "text": "Leads intent classification benchmarks like CLINC150+OOS (97.7 macro-F1), but trails on hard reasoning and workflow tasks."
+      "text": "Achieves top scores on MemoryBench for persistent context retrieval across days, weeks, and months."
     }
   ],
-  "codeSnippet": "# Creavora Morning Briefing — Issue #145\n# Date: Oct 12, 2026 | Dispatched at 06:00 WIB\n# Topic: Cloudflare Releases Clef-omni: A 30B-A3B Multimodal Decision Model\n\n# Key Points:\n# - Clef-omni is a 30B total / 3B active parameter MoE built on Qwen3-Omni, priced at $0.15 per million input tokens.\n# - Accepts up to 4 images, 4 audio clips (300s each), and 2 video clips (60s each) with a 64k-token context window.\n# - Leads intent classification benchmarks like CLINC150+OOS (97.7 macro-F1), but trails on hard reasoning and workflow tasks.\n\n# Source Reference:\n# https://www.marktechpost.com/2026/10/11/cloudflare-clef-omni-multimodal-decision-model/",
+  "codeSnippet": "# Creavora Morning Briefing — Issue #145\n# Date: Oct 13, 2026 | Dispatched at 06:00 WIB\n# Topic: Meta Releases Muse Wonder and Muse Wonder Full, Its First Frontier AI Models\n\n# Key Points:\n# - Priced at $4 per million input tokens and $20 per million output tokens via the Meta Model API.\n# - Muse Wonder Full is restricted to Muse Code subscribers and powers the primary Muse agent.\n# - Achieves top scores on MemoryBench for persistent context retrieval across days, weeks, and months.\n\n# Source Reference:\n# https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
   "links": [
     {
-      "label": "MarkTechPost: Source Article",
-      "url": "https://www.marktechpost.com/2026/10/11/cloudflare-clef-omni-multimodal-decision-model/"
+      "label": "TechCrunch AI: Source Article",
+      "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/"
     },
     {
-      "label": "Tool of the Day: vLLM Semantic Router: High-Throughput Routing and Guardrails",
-      "url": "https://github.com/vllm-project/semantic-router"
+      "label": "Tool of the Day: SGLang: High-Performance Serving for Complex Reasoning and Agentic Workloads",
+      "url": "https://github.com/sglang-project/sglang"
     }
   ],
-  "subject_line": "Cloudflare's 30B Clef-omni & SGLang speed tests",
+  "subject_line": "Meta enters frontier AI with Muse Wonder 🧠",
   "articles": [
     {
-      "headline": "Cloudflare Releases Clef-omni: A 30B-A3B Multimodal Decision Model",
-      "emoji": "☁️",
-      "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/11/cloudflare-clef-omni-multimodal-decision-model/",
-      "summary": "Cloudflare has introduced Clef-omni, an open-weight mixture-of-experts decision model capable of scoring text, images, audio, and video in a single API call. By moving its serving stack to SGLang, Cloudflare also doubled hosted inference speeds for the Clef model family.",
+      "headline": "Meta Releases Muse Wonder and Muse Wonder Full, Its First Frontier AI Models",
+      "emoji": "🧠",
+      "source_name": "TechCrunch AI",
+      "source_url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+      "summary": "Meta’s Superintelligence Lab launched Muse Wonder and Muse Wonder Full, marking its entry into the frontier model tier with performance matching Fable 5.1 and GPT-6 Astra. Trained at the Prometheus data center in Ohio, the models introduce Active Memory and Active Focus architectures designed for long-running agentic tasks.",
       "key_takeaways": [
-        "Clef-omni is a 30B total / 3B active parameter MoE built on Qwen3-Omni, priced at $0.15 per million input tokens.",
-        "Accepts up to 4 images, 4 audio clips (300s each), and 2 video clips (60s each) with a 64k-token context window.",
-        "Leads intent classification benchmarks like CLINC150+OOS (97.7 macro-F1), but trails on hard reasoning and workflow tasks."
+        "Priced at $4 per million input tokens and $20 per million output tokens via the Meta Model API.",
+        "Muse Wonder Full is restricted to Muse Code subscribers and powers the primary Muse agent.",
+        "Achieves top scores on MemoryBench for persistent context retrieval across days, weeks, and months."
       ]
     },
     {
-      "headline": "vLLM Semantic Router Drops Decision 3.0: Five Multimodal Models",
-      "emoji": "🧭",
-      "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/11/what-is-decision-3-0-vllm-semantic-routers-new-open-decision-models/",
-      "summary": "The vLLM Semantic Router team has released Decision 3.0, featuring five Apache-2.0 models ranging from 0.8B to 27B parameters. These models output calibrated probabilities instead of generated text, serving as low-latency routers and guardrails.",
+      "headline": "Microsoft Announces Maia 300 Chiplet Architecture to Power Multi-Gigawatt Azure Deployments",
+      "emoji": "⚡",
+      "source_name": "The Verge AI",
+      "source_url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout",
+      "summary": "Microsoft revealed its third-generation Maia 300 AI accelerator, built on TSMC's N2P process node using a modular chiplet design that separates compute, memory controllers, and I/O. The system is engineered specifically for long-context reasoning and multi-step agentic execution.",
       "key_takeaways": [
-        "Models span sizes from 0.85B (d3-lite) to 26.09B (d3), all featuring native vision encoders handling up to 1.6-megapixel inputs.",
-        "The 9B d3-flash model (59.0 index score) outperforms the previous generation's 27B model (55.9).",
-        "Median text latencies range from 21.7 ms to 84 ms when measured on a single AMD Instinct MI325X GPU."
+        "Delivers 40 percent more tokens per megawatt compared to leading GPU systems.",
+        "Achieves up to 7x the rack-scale token throughput of Maia 200 in a full 96-accelerator configuration.",
+        "Scheduled for production rollout in 2027 to become the primary inference engine for Azure workloads."
       ]
     },
     {
-      "headline": "OrcaRouter Launches OrcaCyber Zero 1.5 with 1M-Token Context",
-      "emoji": "🛡️",
+      "headline": "Alibaba Qwen Introduces QwenGyre: Elastic Reinforcement Learning for Extreme-Long-Horizon Agents",
+      "emoji": "🔄",
       "source_name": "MarkTechPost",
-      "source_url": "https://www.marktechpost.com/2026/10/10/orcarouter-releases-orcacyber-zero-1-5-cybersecurity-model-with-1m-context/",
-      "summary": "OrcaRouter has debuted OrcaCyber Zero 1.5, a post-trained model specialized for vulnerability reproduction, exploit development, and penetration testing. It features a 1-million-token context window and is available via an OpenAI-compatible API.",
+      "source_url": "https://www.marktechpost.com/2026/10/12/alibaba-qwen-introduces-qwengyre-elastic-reinforcement-learning-rl-for-xlong-horizon-agents/",
+      "summary": "Alibaba’s Qwen team detailed QwenGyre, an online reinforcement learning framework that dynamically shifts idle GPUs between rollout generation and model training. Tested on the Qwen 3.8 2.4T model, the system uses trajectory trees and KV-cache migrations over RDMA to accelerate training on tasks running for hours.",
       "key_takeaways": [
-        "Reports 100% on Cybench (39/39 tasks) and 95.8% on a 24-task evaluable subset of CVE-Bench under unrestricted agent execution.",
-        "Priced competitively at $3.00 per million input tokens and $7.50 per million output tokens.",
-        "Access is strictly gated to vetted security researchers and red teams under a specialized Security Research tier."
-      ]
-    },
-    {
-      "headline": "DHH's Campfire Rewrite Proves AI Doesn't Eliminate Architecture Trade-offs",
-      "emoji": "🦀",
-      "source_name": "Hacker News",
-      "source_url": "https://itsallaboutthebit.com/i-am-sorry-but-you-still-have-to-think/",
-      "summary": "A deep technical analysis of DHH's AI-generated rewrites of Campfire Once in Rust and Elixir reveals critical failure modes in concurrency and load handling. The experiment demonstrates that developers must still deeply understand system trade-offs, failure modes, and constraints.",
-      "key_takeaways": [
-        "The Rust version suffered a 1% notification delivery rate under heavy load due to a default broadcast channel capacity limit of 256.",
-        "Increasing channel capacity to 16,384 raised delivery to 90%, but pushed pMax latency past 130 seconds, showing that failing fast is often superior to unbounded queuing.",
-        "Single metrics (like raw throughput) obscure vital system characteristics, such as backpressure handling, memory usage, and client timeout behavior."
+        "Delivers a 1.38x to 1.85x end-to-end speedup over standard colocate reinforcement learning setups.",
+        "Migrates KV-cache blocks over RDMA during role switches with an average switch time of under 9 seconds.",
+        "Improved NL2RepoBench pass rates from 52.5% to 58.5% over 48 training steps on the 2.4T model."
       ]
     }
   ],
   "tool_of_the_day": {
-    "headline": "vLLM Semantic Router: High-Throughput Routing and Guardrails",
-    "source_url": "https://github.com/vllm-project/semantic-router",
-    "summary": "An open-source library built to classify, route, and guardrail LLM requests at the infrastructure layer using probability-based decision models."
+    "headline": "SGLang: High-Performance Serving for Complex Reasoning and Agentic Workloads",
+    "source_url": "https://github.com/sglang-project/sglang",
+    "summary": "SGLang is a fast serving framework for large language models and vision language models featuring RadixAttention for automatic KV-cache reuse. It allows engineering teams to execute complex multi-turn agentic workflows and structured generation with minimal latency overhead."
   }
 }

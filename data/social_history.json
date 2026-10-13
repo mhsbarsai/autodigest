@@ -72,5 +72,19 @@
       "telegram"
     ],
     "card_image": "output/today_social_card.png"
+  },
+  {
+    "timestamp": "2026-10-13T03:22:18.316422+00:00",
+    "subject_line": "Meta enters frontier AI with Muse Wonder 🧠",
+    "articles": [
+      "Meta Releases Muse Wonder and Muse Wonder Full, Its First Frontier AI Models",
+      "Microsoft Announces Maia 300 Chiplet Architecture to Power Multi-Gigawatt Azure Deployments",
+      "Alibaba Qwen Introduces QwenGyre: Elastic Reinforcement Learning for Extreme-Long-Horizon Agents"
+    ],
+    "tool_of_the_day": "SGLang: High-Performance Serving for Complex Reasoning and Agentic Workloads",
+    "dispatched_channels": [
+      "telegram"
+    ],
+    "card_image": "output/today_social_card.png"
   }
 ]
