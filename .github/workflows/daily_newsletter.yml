@@ -1,10 +1,10 @@
-name: AutoDigest Daily Automation
+name: AutoDigest Daily Automation (DISABLED)
 
 on:
-  schedule:
-    # Runs everyday at 23:00 UTC (06:00 AM WIB - Western Indonesia Time)
-    - cron: '0 23 * * *'
-  workflow_dispatch: # Allows manual trigger anytime from GitHub UI
+  # AUTOMATION OFF: Daily schedule disabled per user request.
+  # schedule:
+  #   - cron: '0 23 * * *'
+  workflow_dispatch: # Manual trigger only
 
 jobs:
   build-and-send:
